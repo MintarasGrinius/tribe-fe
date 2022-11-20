@@ -1,53 +1,66 @@
 import Head from 'next/head'
 import axios from 'axios'
-import { useAuth } from '../hooks'
 import { Field, Form, Formik } from 'formik'
-import { makeStyles } from '@material-ui/core'
-import Button from '@mui/material/Button'
-import { useState } from 'react'
+// import Button from '@mui/material/Button'
+import { useContext, useEffect, useState } from 'react'
+import { UserContext } from '../user'
+import { getSession, saveSession } from '../user/sessions'
+import { SessionContext } from '../Session/context'
+import { makeStyles } from '@mui/styles'
 
-const useStyles = makeStyles({
-  container: {
-    padding: '0 2rem',
-  },
-  main: {
-    minHeight: '100vh',
-    padding: '4rem 0',
-    flex: '1',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  title: {
-    margin: '2rem',
-    lineHeight: '1.15',
-    fontSize: '4rem',
-    textAlign: 'center',
-  },
-  form: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '1rem',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexWrap: 'wrap',
-    maxWidth: '800px',
-  },
-  field: {
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'end',
-    '& label': {
-      marginRight: '0.5rem',
+const useStyles = makeStyles(
+  {
+    container: {
+      padding: '0 2rem',
+    },
+    main: {
+      minHeight: '100vh',
+      padding: '4rem 0',
+      flex: '1',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    title: {
+      margin: '2rem',
+      lineHeight: '1.15',
+      fontSize: '4rem',
+      textAlign: 'center',
+    },
+    form: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '1rem',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexWrap: 'wrap',
+      maxWidth: '800px',
+    },
+    field: {
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'end',
+      '& label': {
+        marginRight: '0.5rem',
+      },
     },
   },
-})
+  { name: 'MuiExample_Component' }
+)
 
 export default function Home() {
-  const { setUser } = useAuth()
   const [loading, setLoading] = useState(false)
   const classes = useStyles()
+  const { sessionDispatch } = useContext(SessionContext)
+
+  useEffect(() => {
+    getSession().then((session) => {
+      if (session) {
+        window.location.href = '/dashboard'
+      }
+    })
+  }, [])
 
   const handleLogin = async (values: { email: string; password: string }) => {
     setLoading(true)
@@ -59,12 +72,16 @@ export default function Home() {
       },
     })
       .then(({ data }) => {
-        console.log(data)
-
-        setUser({
-          email: 'email@email.com',
-          token: data.data.auth_token,
-        })
+        saveSession({ token: data.data.auth_token, email: values.email }).then(
+          () => {
+            sessionDispatch({
+              type: 'SET_LOGGED_IN',
+              loggedIn: true,
+              email: values.email,
+            })
+          }
+        )
+        window.location.href = '/dashboard'
       })
       .catch((response) => {
         console.log(response)
@@ -87,8 +104,8 @@ export default function Home() {
 
         <Formik
           initialValues={{
-            email: '',
-            password: '',
+            email: 'email@email.com',
+            password: 'Password01',
           }}
           onSubmit={handleLogin}
         >
@@ -101,9 +118,7 @@ export default function Home() {
               <label htmlFor='password'>Password: </label>
               <Field type='password' name='password' />
             </div>
-            <Button loading type='submit'>
-              Submit
-            </Button>
+            <button type='submit'>Submit</button>
           </Form>
         </Formik>
       </main>
