@@ -1,0 +1,36 @@
+#partnership
+  padding-top: 100px
+  padding-bottom: 85px
+
+  @media all and (max-width: 767px)
+    padding-top: 80px
+
+.partnership-title
+  font-size: 1.6em
+  // font-family: $futura
+  font-weight: 500
+  color: $softGray
+
+@media all and (max-width: 850px)
+  .list-partnership-wrap
+    height: 100px
+    overflow: hidden
+
+.list-partnership
+  justify-content: space-around
+  margin-top: 15px
+  line-height: 3
+
+  @media all and (max-width: 850px)
+    justify-content: unset
+    flex-wrap: nowrap
+    overflow-x: scroll
+    height: calc(100% + 30px)
+
+  &__item
+    padding: 20px
+    cursor: pointer
+
+    img
+      height: auto
+      width: 133px

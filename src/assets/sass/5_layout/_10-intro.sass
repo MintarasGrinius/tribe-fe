@@ -1,0 +1,234 @@
+#intro
+  padding-top: 250px
+  position: relative
+  height: 1260px
+
+  &.payment-switcher-place
+    padding-top: 110px
+
+  &.merchant-page
+
+    .show-search-on-mobile
+      display: none
+
+  @media all and (max-width: 1050px)
+    height: 1080px
+    padding-top: 150px
+
+    &.merchant-page
+      padding-top: 220px
+
+      @media all and (max-width: 767px)
+        padding-top: 175px
+
+        .show-search-on-mobile
+          display: block
+          margin-bottom: 30px
+          .nav-search
+            display: block
+            width: 100%
+
+  @media all and (max-width: 850px)
+    height: auto
+
+  @media all and (max-width: 767px)
+    padding-top: 135px
+
+    &.reduced-padding
+      padding-top: 50px
+
+  &.single-section
+    margin-bottom: 200px
+
+  .background
+    height: 1260px
+    background: $blue
+    position: absolute
+    width: 93vw
+    top: -20px
+    right: -15vw
+    border-radius: 53px
+    transform: rotate(-4deg)
+    overflow: hidden
+
+    @media all and (max-width: 1050px)
+      height: 1080px
+
+    @media all and (max-width: 850px)
+      width: 100%
+      height: 90%
+      width: calc(100% + 280px)
+      right: initial
+      left: 50%
+      transform: translateX(-50%) rotate(-4deg)
+      border-radius: 0
+
+    &.no-left
+      &::before
+        content: none
+
+    &::before
+      content: ""
+      width: 10%
+      height: 50%
+      background: url("../../img/backgrounds/top-bg-left.png") right bottom no-repeat
+      position: absolute
+      left: -3vw
+      bottom: 0
+      background-size: cover
+
+      @media all and (max-width: 850px)
+        background: url("../../img/backgrounds/top-section-line-mobile.png") right bottom no-repeat
+        width: 20%
+
+
+    &::after
+      content: ""
+      width: 40%
+      height: 50%
+      background: url("../../img/backgrounds/top-bg-right.svg") left bottom no-repeat
+      position: absolute
+      right: -20px
+      top: 0
+      background-size: cover
+
+      @media all and (max-width: 850px)
+        content: none
+
+  .grid
+    max-width: 1510px
+
+  .top-section-bundle-images
+    width: 100%
+
+  .smaller-image-right
+    .top-section-bundle-images
+      width: 66%
+
+      @media all and (max-width: 767px)
+        width: 100%
+
+.intro
+  &__content
+    justify-content: space-between
+    align-items: center
+
+    @media all and (max-width: 850px)
+      flex-direction: column-reverse
+
+    &__part-image
+      width: 40%
+
+      @media all and (max-width: 1500px)
+        width: 45%
+
+      &.smaller-image-right
+        width: 45%
+        text-align: right
+
+        @media all and (max-width: 850px)
+          width: 100%
+
+      @media all and (max-width: 850px)
+        width: 100%
+        margin-top: 60px
+
+      &.with-dots
+        position: relative
+        &::after
+          content: ""
+          width: 83px
+          height: 73px
+          background: url("../../img/icons/dots-bg.svg") center center no-repeat
+          position: absolute
+          z-index: -1
+          bottom: -40px
+          left: -40px
+
+      &.with-rotate-background
+        width: 37%
+        &::before
+          content: ""
+          width: 70%
+          height: 55%
+          background: $skyBlue
+          border-radius: 14px
+          position: absolute
+          left: -20px
+          top: 30px
+          transform: rotate(-11deg)
+          z-index: -1
+
+          @media all and (max-width: 1050px)
+            display: none
+
+        @media all and (max-width: 1050px)
+          width: 43%
+
+        @media all and (max-width: 850px)
+          width: 100%
+
+    &__part-text
+      width: 50%
+
+      @media all and (max-width: 1500px)
+        width: 55%
+
+      @media all and (max-width: 850px)
+        width: 100%
+
+      .list-of-facts-with-icons
+        margin-top: 60px
+
+        @media all and (max-width: 767px)
+          margin-top: 30px
+
+      .btn
+        margin-top: 50px
+
+    @media all and (max-width: 850px)
+      &--pos-page
+        flex-direction: row-reverse
+
+        .part-image.smaller-image-right
+          width: 45%
+          margin-top: 0
+
+          .top-section-bundle-images
+            width: 100%
+
+        .part-text
+          width: 55%
+
+    @media all and (max-width: 767px)
+      &--pos-page
+        flex-direction: column-reverse
+
+        .part-image.smaller-image-right, .part-text
+          width: 100%
+
+    &__subtitle
+      font-size: 1.6em
+      line-height: 1.3em
+      color: $white
+      margin-top: 30px
+      width: 85%
+
+      @media all and (max-width: 1300px)
+        font-size: 1.3em
+
+      @media all and (max-width: 767px)
+        font-size: 1.2em
+        width: 100%
+
+      .plugin-section &
+        width: 100%
+
+    &__smaller-text
+      color: $white
+      margin-top: 50px
+
+      a
+        color: $white
+        text-decoration: underline
+        margin-left: 5px

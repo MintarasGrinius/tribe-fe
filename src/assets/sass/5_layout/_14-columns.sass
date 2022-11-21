@@ -1,0 +1,132 @@
+.columns
+  justify-content: space-between
+  align-items: center
+
+  @media all and (max-width: 850px)
+    flex-direction: column
+
+    &--reverse-tablet
+      flex-direction: column-reverse
+
+  &--align-bottom
+    align-items: flex-end
+
+  @media all and (max-width: 1200px)
+    &--align-top-tablet
+      align-items: flex-start
+
+  &--trade
+    .two-columns-image-text__part-text
+      padding-bottom: 100px
+
+      .add-bottom-fixed-line
+        padding-bottom: 40px
+        position: relative
+
+        &::after
+          content: ""
+          width: calc(100% + 200px)
+          height: 1px
+          background: $grayBorder
+          position: absolute
+          bottom: 0
+          left: 0
+          z-index: -1
+
+        @media all and (max-width: 850px)
+          padding-bottom: 0
+          &::after
+            content: none
+
+      @media all and (max-width: 1050px)
+        padding-bottom: 0
+
+    @media all and (max-width: 850px)
+      .column__part-image
+        margin-top: 0
+
+  &.trade-mobile
+    @media all and (max-width: 767px)
+      .text-above-title, .text-block__title
+        padding-left: 30px
+        padding-right: 30px
+
+  @media all and (max-width: 850px)
+    &--pos-page
+      flex-direction: row-reverse
+
+      .two-columns-image-text__part-text
+        width: 50%
+
+      .column__part-image
+        width: 45%
+
+  @media all and (max-width: 767px)
+    &--pos-page
+      flex-direction: column
+
+      .two-columns-image-text__part-text
+        width: 100%
+
+      .column__part-image
+        width: 100%
+
+.column
+  &--part-text
+    width: 50%
+
+    @media all and (max-width: 850px)
+      width: 100%
+
+    .list-of-facts-with-icons, .list-of-checks, .slider-about-switchers
+      margin-top: 55px
+
+      @media all and (max-width: 1300px)
+        margin-top: 35px
+
+      @media all and (max-width: 850px)
+        margin-top: 15px
+
+    @media all and (max-width: 850px)
+      .slider-about-switchers
+        .swiper-wrapper
+          padding-bottom: 0
+
+  &--part-image
+    width: 45%
+
+    @media all and (max-width: 850px)
+      width: 100%
+      margin-top: 40px
+
+    img
+      width: 100%
+
+.text-block
+  &__subtitle
+    margin-top: 45px
+    width: 70%
+    line-height: 1.6em
+    font-size: 1.3em
+
+    &--full-width
+      width: 100%
+
+    @media all and (max-width: 1050px)
+      margin-top: 35px
+
+    @media all and (max-width: 850px)
+      width: 90%
+
+    @media all and (max-width: 767px)
+      width: 100%
+      font-size: 1.2em
+
+    &--wider
+      width: 83%
+
+      @media all and (max-width: 850px)
+        width: 90%
+
+      @media all and (max-width: 767px)
+        width: 100%

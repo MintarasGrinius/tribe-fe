@@ -1,0 +1,271 @@
+.cards
+  justify-content: space-between
+  padding-bottom: 20px
+  margin-top: 70px
+
+  @media all and (max-width: 1150px)
+    &.pricing
+      padding-bottom: 60px
+
+  @media all and (max-width: 850px)
+    margin-top: 40px
+
+  &.show-mobile
+    display: none
+
+  &--four-in-row
+    justify-content: normal
+
+    @media all and (max-width: 1150px)
+      justify-content: space-between
+
+
+  &--single-element
+    margin-top: 0
+    padding-bottom: 0
+
+    @media all and (max-width: 850px)
+      margin-top: 0
+    .cards__item
+      margin:  0 0 50px 0
+
+      @media all and (max-width: 1150px)
+        flex: 1
+
+      @media all and (max-width: 850px)
+        .compliance-section &, .newsroom &
+          margin-top: 50px
+
+  &__item
+    flex: 1
+    margin: 0 20px
+    padding: 60px 30px 50px 30px
+    @include box-shadow
+    text-align: center
+    background: #fff
+    border-radius: 7px
+    position: relative
+    z-index: 2
+
+    @media all and (max-width: 1150px)
+      flex: 0 0 48%
+      margin: 20px 0
+
+    @media all and (max-width: 767px)
+      flex: 0 0 100%
+      margin: 30px 0
+
+      &:last-child
+        margin-bottom: 0
+
+      &:first-child
+        margin-top: 0
+
+    &__title
+      margin-bottom: 20px
+      display: block
+      color: $dark
+
+    &__number
+      color: $violet
+      font-size: .86em
+      margin-top: 30px
+      display: block
+
+    .btn
+      margin-top: 40px
+      transition: box-shadow .2s ease-in-out
+
+
+    &:first-child
+      margin-left: 0
+
+    &:last-child
+      margin-right: 0
+
+    &--exclusive
+      background: $blue
+      color: $white
+
+      .cards__item__title
+        color: $white
+
+    &--align-self
+      align-self: flex-start
+
+    &--align-self-center
+      align-self: center
+
+    &--for-text
+      background: none
+      padding: 20px 20px 0 0
+      box-shadow: none
+      text-align: left
+
+      @media all and (max-width: 767px)
+        padding: 0
+
+      .cards__list__title
+        font-size: 1.6em
+        margin-bottom: 30px
+
+    &--text-only
+      text-align: left
+      padding: 30px 35px
+
+      @media all and (max-width: 767px)
+        padding: 30px
+
+      a
+        text-decoration: underline
+        color: $blue
+
+        @media (hover: hover)
+          &:hover
+            text-decoration: none
+
+
+    &--clickable
+      border: 3px solid transparent
+      transition: border .2s ease-in-out
+      padding: 60px 20px 50px 20px
+      animation: hoverBorderOut .2s ease forwards
+
+      .icon
+        position: static
+        margin-top: 25px
+        display: block
+        transition: transform .4s ease
+
+      &.active
+        animation: hoverBorder .4s ease forwards
+
+      @media (hover: hover)
+        &:hover
+          animation: hoverBorder .4s ease forwards
+          .btn
+            box-shadow: 0px 3px 11px rgba(22, 223, 181, 1)
+
+          .icon
+            transform: translateX(10px)
+
+    .cards--count-number &
+      counter-increment: my-awesome-counter
+      position: relative
+
+      &::before
+        content: counter(my-awesome-counter)
+        position: absolute
+        font-size: 2.8em
+        color: $skyBlue
+        font-weight: 700
+        top: 15px
+        right: 20px
+
+    .cards--four-in-row &
+      flex: 0 0 calc(25% - 30px)
+      margin-bottom: 50px
+
+      @media all and (max-width: 1150px)
+        flex: 0 0 calc(50% - 15px)
+        margin-bottom: 20px
+
+      @media all and (max-width: 767px)
+        flex: 0 0 100%
+        margin: 25px 0
+
+        &:first-child
+          margin-top: 0
+
+      &:nth-child(4n)
+        margin-right: 0
+
+      &:nth-child(4n+1)
+        margin-left: 0
+
+      @media all and (max-width: 1050px)
+        &:nth-child(4n+1)
+          margin-left: 20px
+        &:nth-child(3n+1)
+          margin-left: 0
+        &:nth-child(4n)
+          margin-right: 20px
+        &:nth-child(3n)
+          margin-right: 0px
+
+      @media all and (max-width: 1150px)
+        &:nth-child(3n)
+          margin-right: 0px
+
+        &:nth-child(4n)
+          margin-right: 0px
+
+        &:nth-child(4n+1)
+          margin-left: 0px
+
+    &__image
+      margin: 0 auto 40px
+      border-radius: 50%
+
+    @media all and (max-width: 1050px)
+      .terms-columns &
+        flex: 0 0 calc(50% - 15px)
+        margin-bottom: 30px
+
+        &:nth-child(2n)
+          margin-right: 0
+
+        &:nth-child(2n+1)
+          margin-left: 0
+
+    @media all and (max-width: 767px)
+      .terms-columns &
+        flex: 0 0 100%
+        margin: 0 0 30px
+  @media all and (max-width: 850px)
+    &--pricing
+      padding-bottom: 50px
+
+    &.show-mobile
+      display: flex
+
+  .big-pad-top--more-padding-top &
+    margin-bottom: 50px
+
+.block-text
+  margin-bottom: 30px
+  &:last-of-type
+    margin-bottom: 0
+  label
+    font-weight: 700
+    color: $textDark
+    margin-bottom: 3px
+
+  a:not(.social-media--item)
+    padding: 4px 0
+    text-decoration: underline
+
+    @media (hover: hover)
+      &:hover
+        text-decoration: none
+  >*
+    display: block
+
+  &__headline
+    @extend .text-above-title
+    font-size: 1em
+    margin-bottom: 20px
+
+@keyframes hoverBorder
+  0%
+    border-color: transparent
+
+  100%
+    border-color: $blue
+
+@keyframes hoverBorderOut
+  0%
+    border-color: $blue
+
+  100%
+    border-color: transparent

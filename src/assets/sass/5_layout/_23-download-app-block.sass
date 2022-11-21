@@ -1,0 +1,92 @@
+.block-app
+  background: $white
+  @include box-shadow
+  border-radius: 7px
+  display: flex
+  flex-wrap: wrap
+  padding: 0px 70px
+
+  @media all and (max-width: 850px)
+    justify-content: space-between
+    padding-bottom: 25px
+
+  @media all and (max-width: 767px)
+    padding: 0 25px
+
+  &__image
+    width: 22%
+    height: 100%
+    position: relative
+
+    @media all and (max-width: 767px)
+      display: none
+
+    img
+      position: absolute
+      left: -65px
+      top: -50px
+
+  &__text
+    width: 58%
+    padding: 55px 100px 55px 0
+
+    @media all and (max-width: 850px)
+      padding-right: 0
+
+    @media all and (max-width: 767px)
+      width: 100%
+      padding: 25px 0 40px 0
+
+    &__headline
+      display: flex
+      flex-wrap: wrap
+      align-items: center
+      margin-bottom: 20px
+
+      .warning-label
+        margin-left: 30px
+
+    .title
+      @include headline-bold
+
+  &__app-links
+    width: 20%
+    position: relative
+    display: flex
+    align-items: center
+    @media all and (max-width: 850px)
+      flex-basis: 100%
+      justify-content: flex-end
+    @media all and (max-width: 767px)
+      justify-content: center
+
+    &::before
+      content: ""
+      width: 1px
+      height: calc(100% - 100px)
+      position: absolute
+      background: $grayBorder
+      left: 0
+      top: 50px
+      @media all and (max-width: 767px)
+        content: none
+    .app-download
+      justify-content: flex-end
+      margin-top: 0
+
+      @media all and (max-width: 767px)
+        flex-direction: row
+        justify-content: space-between
+        width: 100%
+
+      a
+        margin: 15px 0
+
+        @media all and (max-width: 850px)
+          margin: 15px 10px
+
+        @media all and (max-width: 767px)
+          margin: 15px 0px
+
+          &:last-child
+            margin-right: 0

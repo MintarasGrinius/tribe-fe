@@ -1,0 +1,159 @@
+#count-numbers
+  padding: 95px 0
+  background: $skyBlue
+
+  @media all and (max-width: 767px)
+    padding: 50px 0
+
+  .grid
+    justify-content: space-between
+
+    @media all and (max-width: 1300px)
+      max-width: 1000px
+
+    @media all and (max-width: 767px)
+      flex-direction: column
+
+  .count-numbers
+    &__item
+      width: 44%
+      text-align: center
+      border-right: 1px solid #DAE5F1
+      position: relative
+      z-index: 2
+
+      @media all and (max-width: 850px)
+        flex: 1
+
+      @media all and (max-width: 767px)
+        width: 100%
+        padding-bottom: 20px
+        border-right: 0
+
+      &__number-wrap
+        text-align: center
+        display: inline-block
+
+        .number
+          font-size: 4.1em
+          // font-family: $futura
+          color: $dark
+          display: flex
+          align-items: center
+
+          @media all and (max-width: 1300px)
+            font-size: 3.5em
+          @media all and (max-width: 850px)
+            font-size: 3em
+          @media all and (max-width: 767px)
+            font-size: 2.3em
+          .spinner
+            display: inline-block
+            height: 120px
+            overflow: hidden
+            line-height: 120px
+            position: relative
+            width: 40px
+            vertical-align: middle
+
+            @media all and (max-width: 850px)
+              height: 80px
+              line-height: 80px
+              margin-left: -2px
+
+            @media all and (max-width: 767px)
+              margin-left: -5px
+
+            &::before, &::after
+              content: ""
+              width: 50px
+              height: 50px
+              width: 127px
+              position: absolute
+              left: -15px
+              z-index: 2
+
+              @media all and (max-width: 850px)
+                content: none
+
+            &::before
+              top: -10px
+              background: linear-gradient(#e9f6ff 0%, rgba(233, 246, 255, 0.45) 100%)
+
+            &::after
+              bottom: -14px
+              background: linear-gradient(rgba(233, 246, 255, 0.45) 0%, #e9f6ff 100%)
+              z-index: -1
+
+
+            span
+              position: absolute
+              top: 0
+              width: 30px
+              left: 0
+              font-size: 1em
+
+          &.reveal-me
+            .spinner
+              span
+                animation-fill-mode: forwards
+                animation-delay: 1s
+                animation-name: spin
+                animation-duration: 2s
+
+        .text
+          font-weight: 500
+          color: $softBlue
+          margin-top: -20px
+
+          @media all and (max-width: 850px)
+            margin-top: 0
+
+      &:first-child
+        text-align: left
+        width: 28%
+        @media all and (max-width: 850px)
+          flex: 1
+
+        @media all and (max-width: 767px)
+          width: 100%
+          text-align: center
+
+      &:last-child
+        text-align: right
+        border-right: 0
+        width: 28%
+        @media all and (max-width: 850px)
+          flex: 1
+
+        @media all and (max-width: 767px)
+          width: 100%
+          text-align: center
+          padding-bottom: 0
+
+@keyframes spin
+  0%
+    top: 0
+  100%
+    top: -19.5em
+
+@media all and (max-width: 1300px)
+  @keyframes spin
+    0%
+      top: 0
+    100%
+      top: -22.85em
+
+@media all and (max-width: 850px)
+  @keyframes spin
+    0%
+      top: 0
+    100%
+      top: -16.01em
+
+@media all and (max-width: 767px)
+  @keyframes spin
+    0%
+      top: 0
+    100%
+      top: -23.2em

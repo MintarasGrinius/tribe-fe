@@ -1,0 +1,176 @@
+.btn
+	display: inline-block
+	height: 50px
+	text-align: center
+	line-height: 50px
+	position: relative
+	border: 0
+	outline: 0
+	cursor: pointer
+	font-family: $font-primary
+	transition: box-shadow .2s ease
+
+	&--submit
+		background: $electric
+		color: $white
+		font-size: 1.2em
+		font-weight: 500
+		position: relative
+		min-width: 145px
+		padding: 0 50px 0 35px
+		@include round-button
+
+		.icon
+			@include translate-top(-50%)
+
+		@media (hover: hover)
+			&:hover
+				box-shadow: 0px 3px 11px rgba(22, 223, 181, 1)
+
+	&--forward
+		background: $electric
+		color: $white
+		font-size: .86em
+		font-weight: 500
+		position: relative
+		padding: 0 50px
+		@include round-button
+
+		@media (hover: hover)
+			&:hover
+				box-shadow: 0px 3px 11px rgba(22, 223, 181, 1)
+
+	&--blue
+		@include round-button
+		padding: 0 15px
+		color: $white
+		font-size: 1em
+		font-weight: 500
+		background: $darkBlue
+		min-width: 210px
+
+		@media (hover: hover)
+			&:hover
+				box-shadow: 0px 3px 11px $darkBlue
+
+		&.with-icon
+			padding-left: 22px
+			padding-right: 45px
+
+			.icon
+				@include translate-top(-50%)
+				right: 20px
+				line-height: 1
+				height: auto
+
+		&.violet
+			background: $violet
+			padding: 0 50px
+
+		&.submitted
+			width: 100%
+			position: absolute
+			margin-left: -29px
+			border-radius: 50px
+			cursor: default
+			&:hover
+				box-shadow: none
+
+	&--form-submit
+		@include round-button
+		background: $electric
+		color: $white
+		border: 0
+		outline: 0
+		font-size: .93em
+		width: 100%
+		height: 50px
+		box-shadow: 0px 3px 11px rgba(22, 223, 181, 0.7)
+		line-height: 1
+		transition: box-shadow .2s ease
+
+		&.disabled
+			cursor: not-allowed
+			background: #bfe8df
+			box-shadow: none
+
+		@media (hover: hover)
+			&:not(.disabled):hover
+				box-shadow: 0px 3px 11px rgba(22, 223, 181, 1)
+
+	&--search
+		background: url("../../img/icons/search-nav.svg") center center no-repeat
+		width: 50px
+		height: 50px
+		appearance: none
+		border: 0
+		outline: 0
+
+	&--rounded
+		border-radius: 50px
+		padding: 0 35px
+		border: 1px solid $grayBorder
+		line-height: 48px
+		@include zoomElement
+
+		&.switcher
+			&::before
+				content: ""
+				width: 15px
+				height: 15px
+				position: absolute
+				@include translate-top(-50%)
+
+			&.previous
+				padding-left: 45px
+				&::before
+					background: url("../../img/icons/arrow-right.svg") center center no-repeat
+					left: 20px
+					transform: translateY(-50%) rotate(180deg)
+					transition: transform .3s ease
+
+				&:hover
+					&::before
+						transform: translate(-10%, -50%) rotate(180deg)
+
+				@media all and (max-width: 767px)
+					padding: 0 25px 0 35px
+					&::before
+						left: 15px
+
+			&.next
+				padding-right: 45px
+				&::before
+					background: url("../../img/icons/arrow-right.svg") center center no-repeat
+					right: 20px
+					transition: transform .3s ease
+
+				&:hover
+					&::before
+						transform: translate(10%, -50%)
+
+				@media all and (max-width: 767px)
+					padding: 0 35px 0 25px
+
+					&::before
+						right: 15px
+
+
+.forward-link
+	color: $blue
+	padding-right: 35px
+	position: relative
+
+	&::after
+		content: ""
+		background: url("../../img/icons/arrow-forward-long.svg") center center no-repeat
+		width: 30px
+		height: 30px
+		position: absolute
+		right: 0
+		@include translate-top(-50%)
+		transition: transform .2s ease
+
+	&:hover
+		&::after
+			transform: translate(10px, -50%)

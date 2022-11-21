@@ -1,0 +1,124 @@
+////////////////////////////////////////////////////////////////////////
+// THEME TYPOGRAPHY
+////////////////////////////////////////////////////////////////////////
+
+
+h1, h2, h3, h4, h5, h6, ul, ol, p
+  margin-top: 0
+  margin-bottom: 0
+
+ul
+  list-style: none
+  padding-top: 0
+
+body
+  font-size: $body-font-size
+  font-family: $font-primary
+  color: $color-primary
+h1
+  font-size: 4em
+  // font-family: $futura
+  font-weight: 600
+
+  #intro &
+    color: $white
+    font-weight: 600
+    line-height: 1.1em
+    width: 80%
+
+    @media all and (max-width: 1400px)
+      width: 100%
+
+    @media all and (max-width: 1300px)
+      font-size: 3.0em
+
+    @media all and (max-width: 767px)
+      font-size: 1.9em
+
+    b
+      color: $electric
+      font-weight: 600
+
+    &.w90
+      width: 90%
+
+      @media all and (max-width: 1050px)
+        width: 100%
+
+    &.w100
+      width: 100%
+h2
+  font-size: 3em
+  color: $dark
+  // font-family: $futura
+  font-weight: 600
+
+  @media all and (max-width: 767px)
+    font-size: 2.2em
+
+h3
+  font-size: 1.6em
+  // font-family: $futura
+  font-weight: 600
+  line-height: 1.25em
+
+  @media all and (max-width: 767px)
+    font-size: 1.4em
+h4
+  font-size: 1em
+  // font-family: $futura
+h5
+  font-size: 0.8em
+  // font-family: $futura
+h6
+  font-size: 0.6em
+p
+  line-height: $body-line-height
+a
+  text-decoration: none
+
+q
+  font-size: 1.5em
+blockquote
+  font-style: italic
+
+
+article
+  p, ul, ol
+    margin-bottom: 1em
+
+.text-above-title
+  text-transform: uppercase
+  font-size: 1.3em
+  color: $softBlue
+  font-weight: 500
+  margin-bottom: 12px
+  display: block
+
+  @media all and (max-width: 767px)
+    font-size: 1em
+    line-height: 1.4em
+
+.text13
+  font-size: 1.3em
+  color: $softGray
+
+  @media all and (max-width: 767px)
+    font-size: 1.2em
+
+@mixin headline-bold
+  font-size: 1.3em
+  // font-family: $futura
+  font-weight: 600
+  color: $dark
+
+  @media all and (max-width: 767px)
+    font-size: 1.2em
+
+.subtitle-section
+  margin-bottom: 40px
+  color: $dark
+
+.title-standard
+  color: $dark
+  font-size: 1.6em

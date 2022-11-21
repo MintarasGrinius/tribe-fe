@@ -1,0 +1,87 @@
+.split-block-inside
+  display: flex
+  justify-content: space-between
+  flex-wrap: wrap
+
+  &__item
+    flex: 0 0 calc(50% - 15px)
+    background: $white
+    @include box-shadow
+    border-radius: 7px
+
+    @media all and (max-width: 767px)
+      flex: 0 0 100%
+      margin-bottom: 40px
+
+      &:last-child
+        margin-bottom: 0
+
+    &__head
+      padding: 35px 40px
+
+      @media all and (max-width: 767px)
+        padding: 30px 35px
+
+      .status-state
+        text-transform: uppercase
+        color: $softBlue
+        font-weight: 500
+
+    &__body
+      padding: 35px 40px
+      border-top: 1px solid #E8EFF4
+
+      @media all and (max-width: 767px)
+        padding: 20px 35px
+
+      .status-state
+        padding-top: 15px
+        padding-bottom: 15px
+        display: block
+
+.status-state
+  padding-left: 35px
+  position: relative
+  &::before
+    content: ""
+    width: 10px
+    height: 10px
+    border-radius: 50%
+    position: absolute
+    left: 0
+    @include translate-top(-50%)
+
+  &--green
+    &::before
+      background: $green
+
+  &--yellow
+    &::before
+      background: $yellow
+
+.logs-block
+  margin-top: 50px
+
+  @media all and (max-width: 767px)
+    .subtitle-section
+      padding-left: 30px
+      padding-right: 30px
+      margin-bottom: 20px
+
+.logs-list
+  padding: 0
+  border-top: 1px solid $grayBorder
+  li
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: 15px 30px
+    border-bottom: 1px solid $grayBorder
+
+    @media all and (max-width: 767px)
+      flex-direction: column
+      align-items: flex-start
+      padding-top: 19px
+
+      a
+        padding: 4px 0

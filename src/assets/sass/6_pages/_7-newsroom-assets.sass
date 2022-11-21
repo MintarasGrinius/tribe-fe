@@ -1,0 +1,125 @@
+.in-press
+  margin-top: 70px
+  @media all and (max-width: 850px)
+    margin-top: 30px
+  .subtitle-section
+    padding-left: 35px
+    @media all and (max-width: 767px)
+      padding-left: 0
+      text-align: center
+.in-press-list
+  padding-left: 0px
+  margin-top: 10px
+  &__item
+    display: flex
+    align-items: center
+    flex-wrap: wrap
+    padding: 25px 0
+    border-bottom: 1px solid $grayBorder
+
+    @media all and (max-width: 767px)
+      flex-direction: column
+      border-bottom: 0
+
+    &:first-child
+      padding-top: 10px
+    &:last-child
+      border-bottom: 0
+.press-item
+  &__logo
+    width: 185px
+    text-align: center
+  &__text
+    width: calc(100% - 185px)
+    @media all and (max-width: 767px)
+      display: none
+    &__title
+      color: $dark
+      font-size: 1.3em
+      margin-bottom: 5px
+      transition: color .2s ease-in-out
+
+    &__date
+      color: $dotGray
+
+  @media (hover: hover)
+    &:hover
+      .press-item__text__title
+        color: $blue
+
+.internal
+  @media all and (max-width: 850px)
+    display: flex
+    margin-top: 40px
+  &__item
+    margin-bottom: 30px
+    @media all and (max-width: 850px)
+      padding-right: 40px
+    &:last-child
+      margin-bottom: 0
+      @media all and (max-width: 850px)
+        padding-right: 0
+    &__headline
+      @include headline-bold
+      margin-bottom: 10px
+      display: block
+
+    &__list
+      padding: 0
+      li
+        a
+          text-decoration: underline
+          font-weight: 500
+          padding: 5px 0
+          display: inline-block
+
+          @media (hover: hover)
+            &:hover
+              text-decoration: none
+
+.download-assets
+  &__item
+    @include box-shadow
+    position: relative
+    z-index: 2
+    border-radius: 7px
+    transition: box-shadow .2s ease-in-out
+    @media (hover: hover)
+      &:hover
+        box-shadow: 0px 5px 11px 0px $hoverBlue
+    @media all and (max-width: 850px)
+      margin-bottom: 30px
+      &:last-child
+        margin-bottom: 0
+    &__image
+      height: 350px
+      width: 100%
+      background-position: center
+      background-repeat: no-repeat
+      background-size: cover
+      border-radius: 7px 7px 0 0
+
+      @media all and (max-width: 767px)
+        height: 210px
+
+    &__text
+      background: $white
+      border-radius: 0 0 7px 7px
+      height: 70px
+      display: flex
+      justify-content: space-between
+      padding: 0 25px
+      align-items: center
+
+      .title
+        @include headline-bold
+
+      .download
+        font-weight: 500
+        color: $blue
+        padding-right: 30px
+        position: relative
+
+        .icon
+          right: 0
+          @include translate-top(-50%)

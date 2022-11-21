@@ -1,0 +1,97 @@
+#blog-single
+  padding-top: 50px
+
+  @media all and (max-width: 767px)
+    .grid
+      padding-left: 0
+      padding-right: 0
+
+  .blog
+    &__image
+      width: 100%
+      height: 425px
+      background-position: center center
+      background-repeat: no-repeat
+      border-radius: 7px
+      background-size: cover
+      position: relative
+      z-index: 2
+
+      @media all and (max-width: 850px)
+        height: 300px
+
+      @media all and (max-width: 767px)
+        height: 200px
+        border-radius: 0
+
+    &__info
+      margin-top: 65px
+      padding: 0 40px
+      position: relative
+      z-index: 2
+
+      @media all and (max-width: 850px)
+        margin-top: 45px
+        padding: 0 20px
+
+      @media all and (max-width: 767px)
+        padding: 0 30px
+
+
+      &__title
+        font-size: 1.6em
+        color: $dark
+        margin-top: 15px
+        margin-bottom: 50px
+
+  .author
+    display: flex
+    align-items: center
+    color: $softBlue
+
+    @media all and (max-width: 360px)
+      flex-direction: column
+      align-items: flex-start
+
+    &__category
+      text-transform: uppercase
+      padding-right: 10px
+      margin-right: 8px
+      position: relative
+      &::after
+        content: "|"
+        position: absolute
+        right: 0
+        top: 0px
+
+    &__time
+      padding-left: 14px
+      margin-left: 11px
+      position: relative
+      &::after
+        content: ""
+        width: 4px
+        height: 4px
+        position: absolute
+        left: 0
+        top: 0px
+        background: $softBlue
+        border-radius: 50%
+        @include translate-top(-50%)
+
+      @media all and (max-width: 767px)
+        display: none
+
+.blog-switcher
+  display: flex
+  align-items: center
+  justify-content: space-between
+  padding: 55px 0px
+  border-top: 1px solid $grayBorder
+  width: calc(100% - 80px)
+  margin: 55px auto 0
+
+  @media all and (max-width: 767px)
+    padding: 45px 30px
+    margin: 40px 0 0
+    width: 100%

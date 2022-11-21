@@ -1,0 +1,154 @@
+footer
+  padding: 70px 0
+
+  @media all and (max-width: 850px)
+    padding: 50px 0 50px
+
+  .grid
+    justify-content: space-between
+
+    @media all and (max-width: 767px)
+      flex-direction: column
+      padding: 0
+
+  .footer-menu
+    display: flex
+    flex-wrap: wrap
+    width: 70%
+    justify-content: space-between
+
+    @media all and (max-width: 850px)
+      .footer-menu__column
+        width: 50%
+        margin-bottom: 20px
+
+    @media all and (max-width: 767px)
+      width: 100%
+
+      .footer-menu__column
+        width: 100%
+        margin-bottom: 9px
+        border-bottom: 1px solid $grayBorder
+
+        &.active
+          .footer-menu__list
+            display: block
+
+    .headline
+      color: $dark
+      margin-bottom: 20px
+
+      @media all and (max-width: 767px)
+        margin-bottom: 0
+        height: 60px
+        line-height: 60px
+        padding: 0 30px
+        position: relative
+
+        &::before
+          content: ""
+          width: 12px
+          height: 12px
+          background: url("../../img/icons/arrow-select-down.svg") center no-repeat
+          position: absolute
+          @include translate-top(-50%)
+          right: 30px
+
+
+    &__list
+      list-style-type: none
+      margin: 0
+      padding: 0
+
+      @media all and (max-width: 767px)
+        display: none
+        padding-left: 30px
+        padding-bottom: 30px
+
+      a
+        color: $color-primary
+        display: inline-block
+        padding: 8px 0
+        position: relative
+
+        &::before
+          content: ""
+          width: 43px
+          height: 2px
+          background: $violet
+          position: absolute
+          left: 0
+          bottom: 2px
+          border-radius: 2px
+          transform: scale(0)
+          transition: transform .3s ease-in-out
+          transform-origin: left
+
+        &.active,&:hover
+          &::before
+            transform: scale(1)
+
+        @media (hover: hover)
+          &:hover
+            &::before
+              width: 100%
+
+  .about-company
+    width: 30%
+    text-align: center
+
+    @media all and (max-width: 767px)
+      width: 100%
+      padding-left: 30px
+      text-align: left
+      padding-top: 30px
+
+    &--box
+      text-align: left
+      display: inline-block
+
+      .logo
+        margin-bottom: 15px
+        display: inline-block
+        width: 157px
+
+        img
+          width: 100%
+
+.social-media
+  display: flex
+  flex-wrap: wrap
+  align-items: baseline
+  a:first-of-type
+    padding: 8px 8px 8px 0px
+  a
+    padding: 8px
+    display: inline-block
+    svg
+      width: 16px
+      transition: color .2s $cubic
+      path
+        transition: color .2s $cubic
+
+    @media (hover: hover)
+      &:hover
+        svg
+          path
+            color: $blue
+
+.support-report
+  .support
+    margin-bottom: 25px
+    flex-direction: column
+    display: flex
+
+    a
+      transition: color .2s $cubic
+
+      @media (hover: hover)
+        &:hover
+          color: $blue
+
+  &.top-border-spacing
+    padding-top: 35px
+    border-top: 1px solid $grayBorder

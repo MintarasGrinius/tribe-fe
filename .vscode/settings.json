@@ -1,0 +1,14 @@
+{
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "eslint.enable": true,
+  "[sass]": {
+    "editor.formatOnSave": false
+  },
+  "[handlebars]": {
+    "editor.formatOnSave": false
+  }
+}

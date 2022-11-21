@@ -1,0 +1,239 @@
+.support-list
+  border-radius: 7px
+  display: flex
+  flex-wrap: wrap
+  flex-direction: column
+  margin-top: 65px
+  position: relative
+  background: $white
+  z-index: 1
+  @include box-shadow
+  margin-bottom: 100px
+  @include blueCardBefore
+
+  &.reveal-me
+    &::before
+      transition: transform 1.3s $cubic 200ms ,opacity .2s ease 200ms
+      transform: rotate(-8deg)
+      opacity: 1
+
+  @media all and (max-width: 1050px)
+    margin-bottom: 50px
+
+  @media all and (max-width: 767px)
+    margin-top: 50px
+
+  &__item
+    height: 75px
+    padding-left: 40px
+    padding-right: 95px
+    border-bottom: 1px solid $grayBorder
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    align-items: center
+    position: relative
+    z-index: 2
+    background: $white
+
+    @media (hover: hover)
+      &:hover
+        .list-text__title
+          color: $blue
+
+        .icon
+          transform: translate(10px, -50%)
+          svg
+            path
+              stroke: $blue
+
+    @media all and (max-width: 850px)
+      padding: 15px 95px 15px 30px
+
+    @media all and (max-width: 767px)
+      height: auto
+      padding: 15px 50px 20px 25px
+      min-height: 80px
+
+    &:first-child
+      border-radius: 7px 7px 0 0
+
+    &:last-child
+      border-radius: 0 0 7px 7px
+
+    .icon
+      position: absolute
+      right: 44px
+      @include translate-top(-50%)
+      transition: transform .3s ease
+
+      svg
+        path
+          transition: stroke .2s ease
+
+      @media all and (max-width: 767px)
+        right: 25px
+.list-text
+  &__title
+    font-size: 1em
+    font-weight: 400
+    color: $textDark
+    font-family: $font-primary
+
+    @media all and (max-width: 767px)
+      line-height: 1.7em
+
+  &__last-comment-result
+    display: flex
+    align-items: center
+
+    @media all and (max-width: 850px)
+      width: 100%
+
+    @media all and (max-width: 767px)
+      flex-basis: 0
+
+      &--search-found
+        flex-basis: 100%
+      p
+        display: none
+
+  &__appears-in
+    text-decoration: underline
+    color: $violet
+    padding-left: 15px
+    margin-left: 10px
+    position: relative
+
+    @media all and (max-width: 767px)
+      padding-left: 0
+      margin-left: 0
+      margin-top: 5px
+
+    &::before
+      content: ""
+      width: 4px
+      height: 4px
+      border-radius: 50%
+      background: $dotGray
+      position: absolute
+      @include translate-top(-50%)
+      left: 0
+
+      @media all and (max-width: 767px)
+        content: none
+
+.support-answer-box
+  background: $white
+  @include box-shadow
+  @include blueCardBefore
+  border-radius: 14px
+  position: relative
+  z-index: 1
+
+  &.reveal-me
+    &::before
+      transition: transform 1.3s $cubic 200ms ,opacity .2s ease 200ms
+      transform: rotate(-8deg)
+      opacity: 1
+
+  &__head
+    padding: 30px
+    border-bottom: 1px solid $grayBorder
+    position: relative
+    background: $white
+    border-radius: 14px 14px 0 0
+    z-index: 2
+
+
+  &__body
+    padding: 30px
+    position: relative
+    z-index: 2
+    background: $white
+    border-radius: 0 0 14px 14px
+
+.support-text
+  &__title
+    @include headline-bold
+    margin-bottom: 20px
+    display: block
+    width: 100%
+
+  &__author
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+
+  &__image
+    width: 47px
+    height: 47px
+    border-radius: 50%
+    overflow: hidden
+    margin-right: 25px
+
+    img
+      width: 100%
+
+  &__name
+    color: $violet
+    font-weight: 700
+
+.support-answer-block
+  padding-bottom: 110px
+  padding-top: 65px
+  border-bottom: 1px solid #D5EAFA
+
+  @media all and (max-width: 1050px)
+    padding-bottom: 70px
+
+.helpful-question
+  margin: 60px auto 0
+  text-align: center
+
+  &__answers
+    display: flex
+    width: 100%
+    flex-wrap: wrap
+    align-items: center
+    justify-content: center
+    margin-top: 30px
+
+    @media all and (max-width: 767px)
+      justify-content: space-between
+
+    .btn
+      height: 50px
+      border-radius: 25px
+      width: 150px
+      border: 1px solid $grayBorder
+      background: none
+      line-height: 1
+      margin: 0 10px
+      @include zoomElement
+
+
+      @media all and (max-width: 767px)
+        width: 45%
+        margin: 0
+
+      span
+        padding-left: 20px
+        position: relative
+        &::before
+          content: ""
+          width: 15px
+          height: 15px
+          position: absolute
+          left: 0
+          @include translate-top(-50%)
+
+      &.yes
+        span
+          &::before
+            background: url("../../img/icons/yes.svg") center left no-repeat
+
+      &.no
+        span
+          &::before
+            background: url("../../img/icons/no.svg") center left no-repeat

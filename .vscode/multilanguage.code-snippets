@@ -1,0 +1,17 @@
+{
+  "Multilanguage page getStaticProps": {
+    "prefix": ["mlgsp"],
+    "body": [
+      "export const getStaticProps: GetStaticProps = async (context) => {",
+      "\tconst namespaces = [\"namespaces you're using for current page and components\"]",
+      "\treturn await getMultilanguageProps(context, namespaces)",
+      "}"
+    ],
+    "description": "Multilanguage page static props"
+  },
+  "Multilanguage useTranslation": {
+    "prefix": ["mlut"],
+    "body": ["const { t } = useTranslation(namespaces)"],
+    "description": "Multilanguage useTranslation"
+  }
+}

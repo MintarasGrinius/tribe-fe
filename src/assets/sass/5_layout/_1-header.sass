@@ -1,0 +1,589 @@
+header
+  background: $white
+  position: fixed
+  z-index: 99
+  width: 100%
+  top: 0
+  left: 0
+  height: 100px
+  @include box-shadow
+
+  @media all and (max-width: 1050px)
+    height: 70px
+
+    &.open-menu
+      box-shadow: 0px 4px 41px rgba(0, 0, 0, 0.1)
+
+  .grid--flex
+    justify-content: space-between
+    align-items: center
+    max-width: 100%
+    padding-left: 50px
+    padding-right: 50px
+    height: 100%
+
+    @media all and (max-width: 1300px)
+      padding-left: 30px
+      padding-right: 30px
+
+    @media all and (max-width: 1050px)
+      padding-right: 10px
+
+    .part
+      flex: 1 1 auto
+      display: flex
+      height: 100%
+
+      &--right
+        justify-content: flex-end
+        align-items: center
+
+        @media all and (max-width: 1050px)
+          .btn
+            display: none
+
+    .logo
+      width: 157px
+      display: flex
+      align-items: center
+      img
+        width: 100%
+
+nav
+  @media all and (max-width: 1050px)
+    &.desktop-menu
+      display: none
+  .main-nav
+    padding: 0
+    list-style-type: none
+    display: flex
+    height: 100%
+    align-items: center
+    margin-left: 55px
+    > li
+      padding-right: 40px
+      padding: 20px 40px 20px 0
+      position: relative
+
+      &:last-child
+        padding-right: 0
+
+      >a:not(.btn)
+        display: inline-block
+        padding: 5px 35px 5px 10px
+        font-size: 1.2em
+        cursor: pointer
+        position: relative
+
+        &::after
+          content: ""
+          width: 20px
+          height: 20px
+          background: url("../../img/icons/arrow-select-down.svg") center center no-repeat
+          position: absolute
+          right: 0
+          top: 50%
+          transform: translateY(-50%)
+          transition: transform .7s $cubic
+          will-change: transform
+
+        &.without-submenu
+          &::after
+            content: none
+
+      @media all and (min-width: 1050px)
+        @media (hover: hover)
+          &:hover
+            >a:not(.btn)
+              &::after
+                transform: translateY(-50%) rotateX(180deg)
+            >.secondary-nav
+              opacity: 1
+              visibility: visible
+              display: flex
+
+// header menu
+
+.secondary-nav
+  position: absolute
+  background: $white
+  width: 770px
+  display: none
+  flex-wrap: wrap
+  left: 10px
+  top: 65px
+  border-radius: 7px
+  overflow: hidden
+  opacity: 0
+  visibility: hidden
+  @include box-shadow
+  @media all and (min-width: 1050px)
+    transition: opacity .3s ease, visibility .3s ease
+
+  .resources
+    padding-left: 2rem
+
+  &__item
+    width: 50%
+    min-height: 100px
+    display: flex
+    align-items: center
+    flex-wrap: wrap
+    position: relative
+    border-right: 1px solid #EBF1F6
+    border-bottom: 1px solid #EBF1F6
+    transition: background .2s ease-in-out
+    will-change: background
+
+    &:nth-child(2n), &:last-child
+      border-right: 0
+
+    &:hover, &.active
+      background: $skyBlue
+
+    .icon-nav
+      width: 85px
+      height: 100%
+      display: flex
+      align-items: center
+      justify-content: center
+      position: relative
+      z-index: 1
+
+      img
+        max-width: 48px
+
+    .text
+      width: calc(100% - 85px)
+      position: relative
+      z-index: 1
+
+      .title
+        font-size: 1.3em
+        font-weight: 600
+        // font-family: $futura
+        color: $dark
+
+    &.full-width
+      width: 100%
+      border-bottom: 0
+
+.user-area
+  display: flex
+  align-items: center
+  margin-right: 25px
+
+  @media all and (max-width: 1050px)
+    display: none
+
+  &__item
+    padding: 0 25px
+
+    &:first-child
+      border-right: 1px solid $gray
+
+    &:only-child
+      border-right: 0
+
+  a
+    font-size: 1.2em
+    line-height: 32px
+    transition: color .2s ease-in-out
+    &::after
+      content: ""
+      width: 20px
+      height: 20px
+      float: left
+
+    @media (hover: hover)
+      &:hover
+        color: $blue
+
+// Secondary blue menu
+.second-nav
+  position: fixed
+  top: 100px
+  width: 100%
+  left: 0
+  background: $blue
+  height: 80px
+  z-index: 98
+  box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.07)
+
+  @media all and (max-width: 1050px)
+    top: 70px
+    height: 70px
+
+  .grid
+    align-items: center
+    justify-content: space-between
+    height: 100%
+
+    @media all and (max-width: 1050px)
+      padding-left: 0
+      overflow: hidden
+      align-items: flex-start
+
+  @media all and (max-width: 1050px)
+    &.support
+      .grid
+        padding-left: 30px
+
+  @media all and (max-width: 850px)
+    &.support
+      .grid
+        padding-left: 30px
+        padding-right: 30px
+
+    &.documentation-mobile
+      .grid
+        padding-left: 30px
+        padding-right: 0
+
+  .second-menu
+    display: flex
+    align-items: center
+    flex-wrap: wrap
+    height: 100%
+    padding: 0
+    margin: 0
+
+    @media all and (max-width: 1050px)
+      height: calc(100% + 30px)
+      width: 60%
+      overflow-x: scroll
+      flex-wrap: nowrap
+
+    @media all and (max-width: 767px)
+      width: 100%
+    li
+      height: 100%
+      position: relative
+      &:last-child
+        &::after
+          content: none
+      &::after
+        content: ""
+        position: absolute
+        right: 0
+        width: 1px
+        height: 30px
+        background: $borderViolet
+        @include translate-top(-50%)
+
+      @media all and (max-width: 1050px)
+        padding-bottom: 30px
+
+        &::after
+          top: 35%
+
+      @media all and (max-width: 1050px) and (hover: hover)
+        padding-bottom: 15px
+
+        &::after
+          top: 40%
+      a
+        display: inline-block
+        width: 100%
+        line-height: 74px
+        align-items: center
+        padding: 5px 25px
+        font-size: 1.26em
+        font-weight: 400
+        color: $white
+        height: 100%
+        position: relative
+        white-space: nowrap
+
+        @media all and (max-width: 1050px)
+          font-size: 1em
+          padding: 5px 35px
+          line-height: 56px
+
+        @media all and (max-width: 767px)
+          padding: 5px 25px
+
+        &::before
+          content: ""
+          width: 100%
+          height: 6px
+          background: $electric
+          position: absolute
+          left: 0
+          bottom: 0
+          opacity: 0
+
+          @media all and (max-width: 1050px)
+            height: 4px
+
+        &::after
+          display: block
+          content: attr(title)
+          font-weight: bold
+          height: 0
+          overflow: hidden
+          visibility: hidden
+
+        &.active
+          font-weight: 700
+          &::before
+            opacity: 1
+
+        @media (hover: hover)
+          &:hover
+            font-weight: 700
+            &::before
+              opacity: 1
+
+  &.documentation-mobile
+    display: none
+
+    @media all and (max-width: 850px)
+      display: block
+      .nav-search
+        display: flex
+        width: calc(100% - 90px)
+
+      .show-hidden
+        width: 80px
+        height: 100%
+        position: relative
+
+        .icon
+          left: 50%
+          top: 50%
+          transform: translate(-50%, -50%)
+
+        &.active
+          .icon
+            transform: translate(-50%, -50%) rotate(180deg)
+
+.nav-search
+  padding-left: 40px
+  position: relative
+
+  @media all and (max-width: 1050px)
+    height: 100%
+    display: flex
+    align-items: center
+    .documentation-mobile &
+      width: 80%
+
+      input
+        width: 100%
+
+  @media all and (max-width: 1000px)
+    width: 35%
+
+  @media all and (max-width: 767px)
+    display: none
+
+  .support &
+    width: 100%
+    display: flex
+    justify-content: space-between
+    align-items: center
+  .icon
+    left: 0
+    @include translate-top(-50%)
+
+    svg path
+      stroke: #fff
+
+  input
+    width: 220px
+    color: $inputPlaceholder
+    transition: color .2s ease-in-out
+    @include search_input
+
+    .support &
+      width: 380px
+
+      @media all and (max-width: 767px)
+        width: 100%
+
+    @media all and (max-width: 767px)
+      width: 100%
+  @media all and (max-width: 767px)
+    .result
+      display: none
+
+  .result
+    color: $inputPlaceholder
+
+.hamburger
+  height: 100%
+  width: 50px
+  display: flex
+  justify-content: center
+  align-items: center
+  position: relative
+  padding-right: 10px
+  display: none
+
+  @media all and (max-width: 1050px)
+    display: flex
+
+  .line
+    width: 28px
+    height: 2px
+    background-color: #C7C7C7
+    display: block
+    margin: 4px 0
+    -webkit-transition: all 0.3s ease-in-out
+    -o-transition: all 0.3s ease-in-out
+    transition: all 0.3s ease-in-out
+
+    &:nth-child(3)
+      width: 16px
+
+  &.active
+    .line
+      &:nth-child(2)
+        opacity: 0
+
+      &:nth-child(1)
+        transform: translateY(6px) rotate(45deg)
+
+      &:nth-child(3)
+        transform: translateY(-6px) rotate(-45deg)
+        width: 28px
+
+.mobile-menu
+  position: fixed
+  width: 100%
+  height: calc(100% - 70px)
+  background: $white
+  z-index: 100
+  top: 70px
+  left: 0
+  padding-top: 30px
+  overflow-y: auto
+  padding-bottom: 50px
+  opacity: 0
+  visibility: hidden
+  z-index: -1
+  transition: opacity ease .1s 800ms, visibility ease .1s 800ms, z-index ease .1s 800ms
+
+  @media all and (max-width: 1050px)
+    &.active
+      opacity: 1
+      visibility: visible
+      z-index: 100
+      transition: opacity ease 0s 0ms, visibility ease 0s 0ms
+
+      .main-nav
+        li
+          opacity: 1
+          transform: translate3d(0,0,0)
+
+          @for $i from 1 through 30
+            &:nth-child(#{$i}n)
+              transition: transform 1s $cubic 100ms + 50ms * $i, opacity .6s ease 100ms + 50ms * $i
+
+      .btn
+        opacity: 1
+        transform: translate3d(0,0,0)
+        transition: transform 1s $cubic 350ms, opacity .6s ease 350ms
+
+  ul.main-nav
+    align-items: flex-start
+    flex-direction: column
+    margin-left: 0
+    height: auto
+
+    li
+      padding: 0
+      width: 100%
+      transform: translate3d(0,-20px,0)
+      opacity: 0
+      @for $i from 1 through 30
+        &:nth-child(#{$i}n)
+          transition: transform 1s $cubic 100ms + 50ms * $i, opacity .6s ease 100ms + 50ms * $i
+
+      &.active
+        .secondary-nav
+          opacity: 1
+          visibility: visible
+          max-height: 1000px
+          transition: opacity ease 0s 0ms, visibility ease 0s 0ms, max-height ease 0s 0ms
+          margin: 20px 0
+
+          &::before
+            opacity: 1
+            transition: opacity ease .1s 500ms
+
+          &__item
+            opacity: 1
+            transform: translate3d(0,0,0)
+
+            @for $i from 1 through 30
+              &:nth-child(#{$i}n)
+                transition: transform 1s $cubic 100ms + 50ms * $i, opacity .6s ease 100ms + 50ms * $i
+
+        >a:not(.btn)
+          &::after
+            transform: translateY(-50%) rotate(180deg)
+
+      >a:not(.btn)
+        padding-top: 13px
+        padding-bottom: 13px
+        padding: 13px 35px 13px 30px
+
+  .secondary-nav
+    position: relative
+    width: 100%
+    box-shadow: none
+    max-height: 0
+    top: 0
+    left: 0
+    border-bottom: 0
+    // margin: 20px 0
+    border-radius: 0
+    display: flex
+    opacity: 0
+    visibility: hidden
+    transition: opacity ease .1s 800ms, visibility ease .1s 800ms, max-height ease 0s 800ms, margin ease 0s 800ms
+
+    &::before
+      content: ""
+      width: 100%
+      height: 1px
+      background: #EBF1F6
+      position: absolute
+      top: 0
+      left: 0
+      opacity: 0
+      transition: opacity ease .1s 0ms
+
+    @media all and (max-width: 850px)
+      flex-direction: column
+      li
+        width: 100%
+
+    &__item
+      border-bottom: 1px solid #EBF1F6
+      opacity: 0
+      transform: translate3d(0,-20px,0)
+
+      @for $i from 1 through 30
+        &:nth-child(#{$i}n)
+          transition: transform 1s $cubic 100ms + 50ms * $i, opacity .6s ease 100ms + 50ms * $i
+      @media all and (max-width: 850px)
+        width: 100%
+        border-right: 0
+
+  .btn
+    margin-left: 30px
+    margin-top: 20px
+    transform: translate3d(0,-20px,0)
+    opacity: 0
+    transition: transform 1s $cubic 350ms, opacity .6s ease 350ms
+
+    @media all and (max-width: 568px)
+      bottom: 35px
+      width: calc(100% - 60px)
+      left: 0px
+
+      &.static
+        position: static

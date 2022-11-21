@@ -1,0 +1,201 @@
+
+.payment-possibilities
+  display: inline-flex
+  flex-wrap: wrap
+  border-bottom: 2px solid $borderBlue
+  padding-bottom: 15px
+  margin-top: 55px
+
+  @media all and (max-width: 850px)
+    margin-top: 40px
+  p
+    margin-right: 10px
+    text-transform: uppercase
+    color: $white
+
+    &:last-child
+      margin-right: 0
+
+.clickable-box
+  display: flex
+  flex-wrap: wrap
+  background: $white
+  box-shadow: 0px 5px 11px 0px rgba(29,0,62,0.07)
+  border-radius: 7px
+  position: relative
+  z-index: 2
+  transition: box-shadow .2s ease-in-out
+
+  @media (hover: hover)
+    &:hover:not(.not-active)
+      box-shadow: 0px 5px 11px 0px $hoverBlue
+
+      .icon
+        transform: translateX(10px)
+
+  @media all and (max-width: 767px)
+    flex-direction: column
+
+  &__image-part
+    background: $blue
+    display: flex
+    width: 30%
+    align-items: center
+    justify-content: center
+    padding: 25px
+    border-radius: 7px 0 0 7px
+
+    img
+      width: 100%
+
+    @media all and (max-width: 767px)
+      width: 100%
+      border-radius: 7px 7px 0 0
+
+  &__text-part
+    width: 70%
+    padding: 40px
+    border-radius: 0 0 7px 7px
+
+    *
+      margin-bottom: 15px
+      &:last-child
+        margin-bottom: 0
+
+    .icon
+      transition: transform .4s ease
+
+    .title
+      color: $dark
+
+    @media all and (max-width: 767px)
+      width: 100%
+      padding: 25px
+
+  &--split-half
+    .clickable-box__image-part
+      width: 45%
+      padding: 0
+
+      @media all and (max-width: 767px)
+        width: 100%
+    .clickable-box__text-part
+      width: 55%
+
+      @media all and (max-width: 767px)
+        width: 100%
+        padding-bottom: 50px
+
+.app-download
+  display: flex
+  flex-wrap: wrap
+  margin-top: 40px
+
+  @media all and (max-width: 767px)
+    flex-direction: column
+    margin-bottom: 20px
+
+  a
+    width: 135px
+    height: 40px
+    margin-right: 20px
+    border-radius: 5px
+
+    @include zoomElement
+
+    &:last-child
+      margin-right: 0
+
+    &.playstore
+      background: url("../../img/single-images/playstore.svg") center center no-repeat
+
+    &.appstore
+      background: url("../../img/single-images/appstore.svg") center center no-repeat
+
+    @media all and (max-width: 767px)
+      margin-right: 0
+      margin-bottom: 15px
+
+      &:last-child
+        margin-bottom: 0
+
+.tab-switcher
+  display: flex
+  align-items: center
+  flex-wrap: wrap
+  height: 75px
+  width: 100%
+  border-bottom: 0
+  border-radius: 7px
+  align-items: stretch
+
+  @media all and (max-width: 850px)
+    flex-direction: column
+    height: auto
+
+  &__item
+    width: 30%
+    text-align: center
+    display: flex
+    align-items: center
+    justify-content: center
+    font-size: 1.3em
+    // font-family: $futura
+    font-weight: 600
+    background: $white
+    border-top: 1px solid $grayBorder
+    border-right: 1px solid $grayBorder
+    cursor: pointer
+    color: $dark
+
+    @media all and (max-width: 850px)
+      width: auto
+      flex: 1
+      padding: 15px
+      border-left: 1px solid $grayBorder
+      flex: auto
+      min-height: 60px
+
+    .with-logo &
+      width: auto
+      padding: 0 60px
+      background: transparent
+      justify-content: space-between
+
+      @media all and (max-width: 1050px)
+        flex: 1
+
+      @media all and (max-width: 1023px)
+        padding: 0 15px
+        background: $white
+
+      @media all and (max-width: 767px)
+        width: 100%
+        font-size: 1em
+
+    .new
+      font-size: .7em
+      margin-left: 30px
+
+    img
+      margin-left: 20px
+      max-height: 75px
+
+      @media all and (max-width: 850px)
+        max-height: 55px
+
+    &:first-child
+      border-left: 1px solid $grayBorder
+      border-top-left-radius: 7px
+
+      @media all and (max-width: 850px)
+        border-radius: 7px 7px 0 0
+
+    &:last-child
+      border-top-right-radius: 7px
+
+      @media all and (max-width: 850px)
+        border-radius: 0
+
+    &.active
+      background: #FAFBFD

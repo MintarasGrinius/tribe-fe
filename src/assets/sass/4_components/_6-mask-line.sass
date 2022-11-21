@@ -1,0 +1,67 @@
+.mask-line
+  position: absolute
+  z-index: 1
+  width: 15vw
+
+  @media all and (max-width: 1700px)
+    width: 10vw
+
+  @media all and (max-width: 767px)
+    display: none
+
+  &.tall-line-right
+    right: 0
+    height: 1320px
+    top: 0
+    background: url("../../img/backgrounds/mask-side-lines-home.svg") left top no-repeat
+
+  &.small-stick-to-top
+    height: 530px
+    right: 0
+    background: url("../../img/backgrounds/small-stick-to-top.svg") left top no-repeat
+    top: 0
+
+  &.small-from-right
+    height: 824px
+    right: 0
+    background: url("../../img/backgrounds/small-from-right.svg") left top no-repeat
+    top: 0
+
+    &.half-top
+      top: -50%
+
+      @media all and (max-width: 850px)
+        top: -35%
+
+    &.center
+      top: 50%
+      transform: translateY(-50%)
+
+    &.bottom
+      bottom: 0
+      height: 540px
+      top: inherit
+
+  &.big-from-left
+    height: 1570px
+    left: 0
+    background: url("../../img/backgrounds/big-from-left.svg") right top no-repeat
+    top: 0
+
+  &.small-bottom-left
+    height: 486px
+    left: 0
+    background: url("../../img/backgrounds/small-bottom-left.svg") right top no-repeat
+    bottom: 0
+
+  &.small-top-left
+    height: 385px
+    left: 0
+    background: url("../../img/backgrounds/small-top-left.svg") right top no-repeat
+    top: 0
+
+  &.big-from-left
+    height: 1284px
+    left: 0
+    background: url("../../img/backgrounds/big-big-from-left.svg") right top no-repeat
+    top: 0

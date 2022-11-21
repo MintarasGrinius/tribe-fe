@@ -1,0 +1,341 @@
+////////////////////////////////////////////////////////////////////////
+// VSBL AGENCY CSS GRID
+////////////////////////////////////////////////////////////////////////
+
+
+ Classes to use: [if default class names are: grid, row, col]
+
+  .grid                        === block container
+  .grid.grid--full             === full page width container
+  .row                         === block which has .col classes inside
+  .row.row--no-gutter          === block which has .col without gutters
+  .row.row--inline-top         === displays .col as inline-blocks. Vertical-align: top
+  .row.row--inline-middle      === --------------------------------- Vertical-align: middle
+  .row.row--inline-bottom      === --------------------------------- Vertical-align: bottom
+  .col                         === block which is is by default with gutter floated to left and 100% width
+  .col.md-1-2                  === class to define width of .col block till md breakpoint
+  .col.md-hide                 === hides block on md and smaller
+  .col.md-push-left-1-2        === puts margin-left on the block which is 1-2 width
+  .col.md-push-right-1-2       === puts margin-right on the block which is 1-2 width
+
+
+////////////////////////////////////////////////////////////////////////
+// GRID VARIABLES
+////////////////////////////////////////////////////////////////////////
+
+
+// HOW TO SETUP GRID
+//   1 - Define class names
+//   2 - Define grid width
+//   3 - Define grid side margins
+//   4 - Define col groups needed for project
+//   5 - Define col responsive sizes. Other groups are needed for easier generation and better control
+//   6 - Define col horizontal gutters. [can't be bigger than $grid-side-margin to avoid negative margins]
+//   7 - Define grid breakpoints. Usually better leave default values {1440px, 1280px, 1024px, 768px, 568px}
+//   8 - Define if you want to use push-left & push-right classes
+//   9 - Define if you want to use hide classes
+//  10 - Define if you want to use testing classes
+
+//   1 - grid class names
+$grid-container-name: "grid" !default
+$grid-row-name: "row" !default
+$grid-column-name: "col" !default
+
+//   2 - grid width
+$grid-max-width: 1270px !default
+
+//   3 - grid side margins
+$grid-side-margin: 30px !default
+
+//   4 - col groups
+$grid-col-groups: (12) !default
+
+//   5 - col sizes
+$grid-col-sizes: xs sm md lg xl xxl !default
+$grid-col-xl-breakpoint-sizes: xs sm md lg xl !default
+$grid-col-lg-breakpoint-sizes: xs sm md lg !default
+$grid-col-md-breakpoint-sizes: xs sm md !default
+$grid-col-sm-breakpoint-sizes: xs sm !default
+$grid-col-xs-breakpoint-sizes: xs !default
+
+//   6 - col side gutters
+$grid-col-gutter: 30px !default
+
+//   7 - grid breakpoints
+$grid-breakpoint-xl: 1441px
+$grid-breakpoint-lg: 1281px
+$grid-breakpoint-md: 1025px
+$grid-breakpoint-sm: 769px
+$grid-breakpoint-xs: 569px
+
+//   8 - push-left & push-rght classes
+$col-push-classes: true !default
+
+//   9 - hide classes
+$col-hide-classes: false !default
+//  10 - testing classes
+$grid-testing-classes: false !default
+
+
+////////////////////////////////////////////////////////////////////////
+// GRID || ROW || COL
+////////////////////////////////////////////////////////////////////////
+
+
+// Grids
+.#{$grid-container-name}
+  margin-left: auto
+  margin-right: auto
+  padding-left: $grid-side-margin
+  padding-right: $grid-side-margin
+  max-width: $grid-max-width
+  &:before, &:after
+    content: ''
+    display: table
+  &:after
+    clear: both
+  &.#{$grid-container-name}--full
+    max-width: 100%
+    width: 100%
+
+  &--flex
+    display: flex
+    &:before, &:after
+      content: none
+
+
+// Rows
+.#{$grid-container-name}
+  .#{$grid-row-name}
+    margin-left: -($grid-col-gutter/2)
+    margin-right: -($grid-col-gutter/2)
+    &:before, &:after
+      content: ''
+      display: table
+    &:after
+      clear: both
+    &.#{$grid-row-name}--no-gutter
+      margin-left: 0
+      margin-right: 0
+      .#{$grid-column-name}
+        padding-left: 0
+        padding-right: 0
+    &.#{$grid-row-name}--inline-top, &.#{$grid-row-name}--inline-middle, &.#{$grid-row-name}--inline-bottom
+      font-size: 0
+      position: relative
+      .#{$grid-column-name}
+        float: none
+        font-size: $body-font-size
+        display: inline-block
+        vertical-align: top
+    &.#{$grid-row-name}--inline-middle
+      .#{$grid-column-name}
+        vertical-align: middle
+    &.#{$grid-row-name}--inline-bottom
+      .#{$grid-column-name}
+        vertical-align: bottom
+
+
+// Cols
+.#{$grid-container-name}
+  .#{$grid-row-name}
+    .#{$grid-column-name}
+      float: left
+      padding-left: $grid-col-gutter/2
+      padding-right: $grid-col-gutter/2
+      position: relative
+      width: 100%
+
+    // $grid-breakpoint-xl[1440px] >= SCREEN WIDTH
+    @each $size in $grid-col-sizes
+      .#{$size}-1-1
+        width: 100%
+      @each $group in $grid-col-groups
+        @for $i from 1 through $group
+          .#{$size}-#{$i}-#{$group}
+            width: percentage($i/$group)
+
+    // $grid-breakpoint-xl[1440px] < SCREEN WIDTH
+    @media (max-width: $grid-breakpoint-xl)
+      [class*="xxl-"]
+        width: 100%
+      @each $size in $grid-col-xl-breakpoint-sizes
+        @each $group in $grid-col-groups
+          @for $i from 1 through $group
+            .#{$size}-#{$i}-#{$group}
+              width: percentage($i/$group)
+
+    // $grid-breakpoint-lg[1280px] < SCREEN WIDTH
+    @media (max-width: $grid-breakpoint-lg)
+      [class*="xxl-"], [class*="xl-"]
+        width: 100%
+      @each $size in $grid-col-lg-breakpoint-sizes
+        @each $group in $grid-col-groups
+          @for $i from 1 through $group
+            .#{$size}-#{$i}-#{$group}
+              width: percentage($i/$group)
+
+    // $grid-breakpoint-md[1024px] < SCREEN WIDTH
+    @media (max-width: $grid-breakpoint-md)
+      [class*="xxl-"], [class*="xl-"], [class*="lg-"]
+        width: 100%
+      @each $size in $grid-col-md-breakpoint-sizes
+        @each $group in $grid-col-groups
+          @for $i from 1 through $group
+            .#{$size}-#{$i}-#{$group}
+              width: percentage($i/$group)
+
+    // $grid-breakpoint-sm[768] < SCREEN WIDTH
+    @media (max-width: $grid-breakpoint-sm)
+      [class*="xxl-"], [class*="xl-"], [class*="lg-"], [class*="md-"]
+        width: 100%
+      @each $size in $grid-col-sm-breakpoint-sizes
+        @each $group in $grid-col-groups
+          @for $i from 1 through $group
+            .#{$size}-#{$i}-#{$group}
+              width: percentage($i/$group)
+
+    // $grid-breakpoint-xs[568px] < SCREEN WIDTH
+    @media (max-width: $grid-breakpoint-xs)
+      [class*="xxl-"], [class*="xl-"], [class*="lg-"], [class*="md-"], [class*="sm-"]
+        width: 100%
+      @each $size in $grid-col-xs-breakpoint-sizes
+        @each $group in $grid-col-groups
+          @for $i from 1 through $group
+            .#{$size}-#{$i}-#{$group}
+              width: percentage($i/$group)
+
+
+////////////////////////////////////////////////////////////////////////
+// HIDE || PUSH || PULL
+////////////////////////////////////////////////////////////////////////
+
+
+// Hide classes
+@if ($col-hide-classes)
+  .#{$grid-container-name}
+    .#{$grid-row-name}
+      // $grid-breakpoint-xl[1440px] < SCREEN WIDTH
+      @media (max-width: $grid-breakpoint-xl)
+        .xl-hide
+          display: none
+      // $grid-breakpoint-lg[1280px] < SCREEN WIDTH
+      @media (max-width: $grid-breakpoint-lg)
+        .lg-hide
+          display: none
+      // $grid-breakpoint-md[1024px] < SCREEN WIDTH
+      @media (max-width: $grid-breakpoint-md)
+        .md-hide
+          display: none
+      // $grid-breakpoint-sm[768px] < SCREEN WIDTH
+      @media (max-width: $grid-breakpoint-sm)
+        .sm-hide
+          display: none
+      // $grid-breakpoint-xs[568px] < SCREEN WIDTH
+      @media (max-width: $grid-breakpoint-xs)
+        .xs-hide
+          display: none
+
+// Push & Pull classes
+@if ($col-push-classes)
+  .#{$grid-container-name}
+    .#{$grid-row-name}
+      // $grid-breakpoint-xl[1440px] >= SCREEN WIDTH
+      @each $size in $grid-col-sizes
+        @each $group in $grid-col-groups
+          @for $i from 1 through $group
+            .#{$size}-push-left-#{$i}-#{$group}
+              margin-left: percentage($i/$group)
+            .#{$size}-push-right-#{$i}-#{$group}
+              margin-right: percentage($i/$group)
+
+      // $grid-breakpoint-xl[1440px] < SCREEN WIDTH
+      @media (max-width: $grid-breakpoint-xl)
+        [class*="xxl-push-left-"]
+          margin-left: 0
+        [class*="xxl-push-right-"]
+          margin-right: 0
+        @each $size in $grid-col-xl-breakpoint-sizes
+          @each $group in $grid-col-groups
+            @for $i from 1 through $group
+              .#{$size}-push-left-#{$i}-#{$group}
+                margin-left: percentage($i/$group)
+              .#{$size}-push-right-#{$i}-#{$group}
+                margin-right: percentage($i/$group)
+
+      // $grid-breakpoint-lg[1280px] < SCREEN WIDTH
+      @media (max-width: $grid-breakpoint-lg)
+        [class*="xxl-push-left-"], [class*="xl-push-left-"]
+          margin-left: 0
+        [class*="xxl-push-right-"], [class*="xl-push-right-"]
+          margin-right: 0
+        @each $size in $grid-col-lg-breakpoint-sizes
+          @each $group in $grid-col-groups
+            @for $i from 1 through $group
+              .#{$size}-push-left-#{$i}-#{$group}
+                margin-left: percentage($i/$group)
+              .#{$size}-push-right-#{$i}-#{$group}
+                margin-right: percentage($i/$group)
+
+      // $grid-breakpoint-md[1024px] < SCREEN WIDTH
+      @media (max-width: $grid-breakpoint-md)
+        [class*="xxl-push-left-"], [class*="xl-push-left-"], [class*="lg-push-left-"]
+          margin-left: 0
+        [class*="xxl-push-right-"], [class*="xl-push-right-"], [class*="lg-push-right-"]
+          margin-right: 0
+        @each $size in $grid-col-md-breakpoint-sizes
+          @each $group in $grid-col-groups
+            @for $i from 1 through $group
+              .#{$size}-push-left-#{$i}-#{$group}
+                margin-left: percentage($i/$group)
+              .#{$size}-push-right-#{$i}-#{$group}
+                margin-right: percentage($i/$group)
+
+      // $grid-breakpoint-sm[768px] < SCREEN WIDTH
+      @media (max-width: $grid-breakpoint-sm)
+        [class*="xxl-push-left-"], [class*="xl-push-left-"], [class*="lg-push-left-"], [class*="md-push-left-"]
+          margin-left: 0
+        [class*="xxl-push-right-"], [class*="xl-push-right-"], [class*="lg-push-right-"], [class*="md-push-right-"]
+          margin-right: 0
+        @each $size in $grid-col-sm-breakpoint-sizes
+          @each $group in $grid-col-groups
+            @for $i from 1 through $group
+              .#{$size}-push-left-#{$i}-#{$group}
+                margin-left: percentage($i/$group)
+              .#{$size}-push-right-#{$i}-#{$group}
+                margin-right: percentage($i/$group)
+
+      // $grid-breakpoint-xs[568px] < SCREEN WIDTH
+      @media (max-width: $grid-breakpoint-xs)
+        [class*="xxl-push-left-"], [class*="xl-push-left-"], [class*="lg-push-left-"], [class*="md-push-left-"], [class*="sm-push-left-"]
+          margin-left: 0
+        [class*="xxl-push-right-"], [class*="xl-push-right-"], [class*="lg-push-right-"], [class*="md-push-right-"], [class*="sm-push-right-"]
+          margin-right: 0
+        @each $size in $grid-col-xs-breakpoint-sizes
+          @each $group in $grid-col-groups
+            @for $i from 1 through $group
+              .#{$size}-push-left-#{$i}-#{$group}
+                margin-left: percentage($i/$group)
+              .#{$size}-push-right-#{$i}-#{$group}
+                margin-right: percentage($i/$group)
+
+
+////////////////////////////////////////////////////////////////////////
+// TESTING STYLING
+////////////////////////////////////////////////////////////////////////
+
+
+@if ($grid-testing-classes)
+  .#{$grid-container-name}
+    background: #bada55
+    padding-top: 20px
+    padding-bottom: 20px
+    .#{$grid-row-name}
+      background: yellow
+      padding-top: 20px
+      padding-bottom: 20px
+      .#{$grid-column-name}
+        border: 1px solid red
+        > *
+          display: block
+          background: pink

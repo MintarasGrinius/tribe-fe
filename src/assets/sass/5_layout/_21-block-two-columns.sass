@@ -1,0 +1,89 @@
+#block-two-columns
+  padding: 60px 0 120px 0
+  @media all and (max-width: 850px)
+    padding: 50px 0 100px 0
+
+    .grid
+      flex-direction: column
+
+  &.two-columns--pad-bottom
+    padding-bottom: 50px
+
+.two-columns
+  &__left
+    width: 70%
+    padding-right: 45px
+    @media all and (max-width: 1050px)
+      width: 65%
+    @media all and (max-width: 850px)
+      width: 100%
+      padding-right: 0
+  &__right
+    width: 30%
+    @media all and (max-width: 1050px)
+      width: 35%
+
+    @media all and (max-width: 850px)
+      width: 100%
+  &--reverse
+    .two-columns__left
+      width: 30%
+      padding-right: 0
+      @media all and (max-width: 850px)
+        width: 100%
+        margin-top: 60px
+    .two-columns__right
+      width: 70%
+      padding-left: 45px
+      @media all and (max-width: 850px)
+        width: 100%
+        padding-left: 0
+
+    @media all and (max-width: 850px)
+      padding-top: 50px
+      .grid
+        flex-direction: column-reverse
+
+      .support-report
+        margin-top: 50px
+
+    .support-report
+      text-align: center
+
+      .social-media
+        justify-content: center
+
+  @media all and (max-width: 850px)
+    &.newsroom
+      .two-columns__right
+        display: none
+    &--bottom-with-assets, &.status
+      .grid
+        flex-direction: column
+
+    &.documentation
+      .two-columns__right
+        display: none
+
+    &.status
+      .cards
+        margin-top: 40px
+
+  @media all and (max-width: 767px)
+    &.status
+      padding-bottom: 50px
+      .grid
+        padding: 0
+        .split-block-inside, .two-columns__right
+          padding-left: 30px
+          padding-right: 30px
+    &.newsroom
+      padding-bottom: 70px
+
+    &.documentation
+      .grid
+        padding: 0
+
+  &--align-center
+    .grid
+      align-items: center

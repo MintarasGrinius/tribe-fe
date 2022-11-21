@@ -1,0 +1,196 @@
+.block-about-us-pad
+  padding-top: 50px
+  padding-bottom: 120px
+
+  @media all and (max-width: 767px)
+    padding-bottom: 90px
+
+.image-cover-background
+  width: 100%
+  height: 390px
+  position: relative
+  z-index: 1
+  @include blueCardBefore
+  &::before
+    transform: rotate(0deg)
+    left: -10px
+    bottom: -5px
+    height: 100%
+    width: calc(100% + 20px)
+    background-color: $skyBlue
+
+  &.reveal-me
+    &::before
+      transition: transform 1.3s $cubic 900ms ,opacity .2s ease 900ms
+      transform: rotate(5deg)
+      opacity: 1
+
+    &.image-cover-background--darker-left
+      &::before
+        transform: rotate(-5deg)
+        background: #C9ECF4
+
+  &__cover
+    background-size: cover
+    background-position: center center
+    background-repeat: no-repeat
+    width: 100%
+    height: 100%
+    border-radius: 7px
+
+  @media all and (max-width: 767px)
+    height: 215px
+
+.inside-page-navigation
+  display: inline-flex
+  flex-direction: column
+  margin-top: 70px
+  @media all and (max-width: 767px)
+    width: 100%
+    margin-top: 50px
+  &__item
+    font-size: 1.2em
+    color: $dark
+    padding: 10px 85px 10px 0
+    border-bottom: 1px solid $grayBorder
+    position: relative
+
+    @media all and (max-width: 767px)
+      padding-right: 55px
+
+    &:last-child
+      border-bottom: 0
+
+    .icon
+      position: absolute
+      right: 10px
+      transition: transform .3s ease-in-out
+      @include translate-top(-50%)
+
+    @media (hover: hover)
+      &:hover
+        .icon
+          transform: translate3d(10px, -50%, 0)
+
+.milestones-timeline-section
+  position: relative
+  padding-top: 80px
+  &::before
+    content: ""
+    width: 100%
+    height: 2px
+    background: #F3F5F7
+    position: absolute
+    bottom: 24px
+    left: 0
+    z-index: 1
+
+  .grid
+    padding: 0
+
+  @media all and (max-width: 850px)
+    padding-top: 50px
+    height: 180px
+
+    .grid
+      height: 130px
+      overflow: hidden
+
+.milestones-timeline-wrap
+  overflow-x: auto
+  padding: 0 30px
+
+  @media all and (max-width: 850px)
+    padding: 0
+    height: 160px
+
+.milestones-timeline
+  display: flex
+  flex-wrap: wrap
+  padding-top: 100px
+  position: relative
+  z-index: 2
+  padding-bottom: 10px
+
+  @media all and (max-width: 850px)
+    width: 800px
+    padding-left: 40px
+    padding-top: 90px
+    padding-bottom: 20px
+
+  &__item
+    flex: 1
+    text-align: center
+    position: relative
+
+    &__dot
+      width: 27px
+      height: 27px
+      border-radius: 50%
+      background: $skyBlue
+      display: inline-block
+      cursor: pointer
+      box-shadow: 0px 0px 13px 0px rgba(80,34,62,0)
+      transition: all .2s ease-in-out
+
+      &--empty
+        border: 2px solid $softBlue
+        background: $white
+
+        @media (hover: hover)
+          &:hover
+            border-color: $blue
+
+      &:hover, &.active
+        background: $blue
+        box-shadow: 0px 0px 13px 0px rgba(80,34,62,0.34)
+
+    &__date
+      position: absolute
+      font-size: 1.3em
+      // font-family: $futura
+      font-weight: 600
+      color: $softBlue
+      left: -20px
+      bottom: 87px
+
+      &::after
+        content: ""
+        width: 2px
+        height: 66px
+        background: #F3F5F7
+        position: absolute
+        left: 50%
+        margin-left: -1px
+        bottom: -71px
+
+.milestone-result
+  &__date
+    color: $blue
+    text-transform: uppercase
+    font-size: 1.13em
+    font-weight: 500
+    display: block
+    margin-bottom: 10px
+
+  &__title
+    color: $dark
+    font-size: 2em
+    // font-family: $futura
+    font-weight: 600
+    margin-bottom: 30px
+    white-space: pre-wrap
+
+  &__text-box
+    font-size: 1.3em
+
+  &__image
+    text-align: center
+    img
+      max-width: 350px
+
+.milestones-result
+  display: none
+
+  &.active-body
+    display: block

@@ -1,0 +1,158 @@
+.documentation-content
+  &__item
+    padding-bottom: 50px
+    border-bottom: 1px solid $grayBorder
+    margin-bottom: 50px
+
+    @media all and (max-width: 767px)
+      padding-left: 30px
+      padding-right: 30px
+
+    &:last-child
+      margin-bottom: 0
+      padding-bottom: 0
+      border-bottom: 0
+
+
+.doc-item
+  &__box
+    display: flex
+    justify-content: space-between
+
+    @media all and (max-width: 767px)
+      flex-direction: column
+
+    &__title
+      font-size: 1.6em
+      width: calc(100% - 145px)
+
+      @media all and (max-width: 767px)
+        width: 100%
+
+    &__edit
+      color: $blue
+      border: 0
+      outline: 0
+      background: none
+      font-weight: 700
+      cursor: pointer
+
+      @media all and (max-width: 767px)
+        text-align: left
+        padding: 15px 0
+
+  &__head
+    margin-bottom: 20px
+    &__about
+      font-size: 1em
+      font-family: $font-primary
+      color: $blue
+      margin-top: 8px
+
+.documentation-sidebar
+  background: $white
+  @include box-shadow
+  border-radius: 7px
+  position: relative
+  z-index: 2
+  &.mobile
+    display: none
+    position: fixed
+    top: 140px
+    width: 100%
+    left: 0
+    height: calc(100vh - 140px)
+    overflow-y: auto
+    transform: translateY(-100vh)
+    transition: transform 1s ease-in-out, visibility 0s 1000ms
+    z-index: 97
+    visibility: hidden
+
+    @media all and (max-width: 850px)
+      display: block
+
+    &.active
+      transform: translateY(0)
+      visibility: visible
+      transition: transform 1s ease-in-out, visibility 0s
+
+  .search
+    border-radius: 7px 7px 0 0
+    padding: 25px 40px 25px 80px
+    position: relative
+    border-bottom: 1px solid $grayBorder
+
+    .icon
+      left: 40px
+      @include translate-top(-50%)
+
+    &__input
+      @include search-input
+      color: $dark
+      width: 100%
+
+      &::-webkit-input-placeholder
+        color: #BBC0CD
+      &::-moz-placeholder
+        color: #BBC0CD
+      &:-ms-input-placeholder
+        color: #BBC0CD
+      &:-moz-placeholder
+        color: #BBC0CD
+
+  &__info
+    padding: 35px 40px
+    @media all and (max-width: 850px)
+      padding: 35px 30px 85px 30px
+
+  .info
+    &__block
+      margin-bottom: 50px
+      &:last-child
+        margin-bottom: 0
+
+      &__headline
+        margin-bottom: 30px
+        color: $dark
+
+      &__list
+        padding: 0
+        &--two-column
+          display: flex
+          flex-wrap: wrap
+
+          li
+            width: 50%
+
+            &:nth-child(odd)
+              padding-right: 10px
+
+            &:nth-child(2n)
+              padding-left: 35px
+              border-left: 1px solid $grayBorder
+        a
+          padding: 5px 0
+          display: inline-block
+          word-break: break-word
+          transition: color .2s ease-in-out
+          @media (hover: hover)
+            &:hover
+              color: $blue
+
+.type
+  width: 50px
+  height: 20px
+  border-radius: 20px
+  text-transform: uppercase
+  color: $white
+  font-size: .73em
+  line-height: 20px
+  display: inline-block
+  text-align: center
+  margin-right: 15px
+
+  &--get
+    background: $blue
+
+  &--post
+    background: $electric

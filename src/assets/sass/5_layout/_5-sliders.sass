@@ -1,0 +1,296 @@
+.slider-about
+  border-radius: 5px
+  background: $white
+
+  @include box-shadow
+
+  &.buy-page
+    box-shadow: none
+    background: none
+    .swiper-wrapper
+      padding: 20px
+
+      @media all and (max-width: 850px)
+        padding: 0
+
+  &--item
+    &__image-title
+      padding: 0 35px 15px 35px
+
+      img
+        display: block
+        max-width: 350px
+        margin: 0 auto
+
+      .title
+        font-weight: 500
+        // font-family: $futura
+        color: $dark
+
+    &__text
+      border-top: 1px solid $grayBorder
+      padding: 22px 35px
+
+.swiper-box
+  position: relative
+  z-index: 2
+
+  @media all and (max-width: 767px)
+    .swiper-button-prev, .swiper-button-next
+      display: none
+
+.swiper-news
+  .swiper-slide
+    padding: 20px
+    @media all and (max-width: 767px)
+      padding: 0 20px
+
+    &--box
+      display: flex
+      flex-wrap: wrap
+      border-radius: 5px
+      color: $softGray
+
+    &__image-wrap
+      width: 50%
+      overflow: hidden
+      border-radius: 7px 0 0 7px
+
+      @media all and (max-width: 850px)
+        width: 100%
+        height: 50vw
+        border-radius: 7px 7px 0 0
+      @media all and (max-width: 767px)
+        width: 100%
+        height: auto
+    &__image
+      width: 100%
+      height: 100%
+      overflow: hidden
+      border-radius: 7px 0 0 7px
+      background-size: cover
+      transition: transform 1s ease
+      will-change: transform
+      object-fit: cover
+      object-position: left
+
+      @media all and (max-width: 850px)
+        width: 100%
+        height: 50vw
+        border-radius: 7px 7px 0 0
+
+      @media all and (max-width: 767px)
+        height: 175px
+
+    &__text
+      width: 50%
+      padding: 60px 65px 130px 75px
+      box-shadow: 0px 0px 29px rgba(29, 0, 62, 0.07)
+      border-radius: 0 7px 7px 0
+      position: relative
+      background: $white
+
+      @media all and (max-width: 1100px)
+        padding: 40px 45px 110px 55px
+
+      @media all and (max-width: 850px)
+        width: 100%
+        border-radius: 0px 0px 7px 7px
+
+      @media all and (max-width: 767px)
+        padding: 25px 20px
+
+      &__category-date
+        display: flex
+        flex-wrap: wrap
+        justify-content: space-between
+        font-weight: 500
+
+        label
+          color: $violet
+
+      &__main
+        margin-top: 60px
+
+        @media all and (max-width: 850px)
+          margin-top: 40px
+
+        @media all and (max-width: 767px)
+          margin-top: 20px
+
+        .title
+          color: $dark
+          margin-bottom: 30px
+
+          @media all and (max-width: 767px)
+            margin-bottom: 20px
+
+        p
+          font-size: 1.3em
+          max-height: 185px
+          overflow: hidden
+
+          @media all and (max-width: 767px)
+            font-size: 1.13em
+            max-height: 115px
+
+      &__time-to-read
+        position: absolute
+        bottom: 60px
+        left: 75px
+        display: flex
+        justify-content: space-between
+        flex-wrap: wrap
+        width: calc(100% - 140px)
+
+        .icon
+          position: static
+          transition: transform 1s ease
+          will-change: transform
+
+        @media all and (max-width: 767px)
+          display: none
+
+        @media all and (max-width: 1100px)
+          left: 55px
+
+    @media (hover: hover)
+      &:hover
+        .swiper-slide
+          &__image
+            transform: scale(1.05)
+
+          &__text__time-to-read
+            .icon
+              transform: translateX(10px)
+
+.swiper-pagination-bullet
+  width: 10px
+  height: 10px
+  background: #8bcfff
+  margin: 0 8px
+  cursor: pointer
+  position: relative
+  z-index: 1
+  &-active
+    background: $softBlue
+
+.swiper-pagination-about
+  margin-top: 25px
+  text-align: center
+
+.swiper-external-switcher
+  transform: translateX(-10px)
+  padding-left: 10px
+  padding-right: 10px
+  width: calc(100% + 20px)
+  &.with-numbers
+    .swiper-wrapper
+      counter-reset: numbers
+      height: 220px
+      align-items: flex-start
+
+      @media all and (max-width: 850px)
+        height: auto
+
+  .swiper-wrapper
+    width: 100% !important
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    padding: 20px 0
+    transform: translate(0px, 0px) !important
+
+    @media all and (max-width: 850px)
+      justify-content: space-between
+
+  &--item
+    width: 135px !important
+    height: 50px
+    display: flex
+    align-items: center
+    text-align: center
+    padding-left: 10px
+    position: relative
+    border-radius: 50px
+    font-size: 1.2em
+    margin: 0 8px
+    justify-content: center
+    cursor: pointer
+    background: $white
+    transition: background .2s ease-in-out, box-shadow .2s ease-in-out, color .2s ease-in-out
+    will-change: background, box-shadow, color
+    position: relative
+
+    @include box-shadow
+
+    @media all and (max-width: 1300px)
+      margin: 0 12% 20px 12%
+
+      &:nth-child(1n+1)
+        margin-left: 0
+
+    @media all and (max-width: 850px)
+      width: 48% !important
+      margin: 10px 0
+
+    .icon
+      left: 18px
+
+      @include translate-top(-50%)
+
+      svg path
+        stroke: $violet
+        transition: stroke .2s ease-in-out
+        will-change: stroke
+
+    &:hover, &.swiper-slide-thumb-active
+      background: $violet
+      color: $white
+      box-shadow: 0px 8px 15px rgba(80, 34, 237, 0.22)
+
+      .icon
+        left: 18px
+
+        svg path
+          stroke: $white
+
+    .with-numbers &
+      counter-increment: numbers
+      @media all and (max-width: 1300px)
+        margin: 0 8px
+
+      @media all and (max-width: 850px)
+        margin: 10px 0
+
+      &::after
+        content: counter(numbers)
+        font-size: 12.6em
+        font-weight: 700
+        color: $skyBlue
+        position: absolute
+        top: -20px
+        z-index: -1
+        // font-family: $futura
+
+        @include translate-left(-50%)
+
+        @media all and (max-width: 1050px)
+          font-size: 10em
+          top: 0px
+
+        @media all and (max-width: 850px)
+          content: none
+
+      &.swiper-slide-thumb-active
+        &::after
+          color: $skyBlueActive
+
+.swiper-buttons
+  .swiper-slide
+    text-align: center
+    img
+      width: 540px
+
+      @media all and (max-width: 1050px)
+        width: 80%

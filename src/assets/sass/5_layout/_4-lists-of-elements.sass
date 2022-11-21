@@ -1,0 +1,182 @@
+.list-of-facts-with-icons
+  padding: 0
+  list-style-type: none
+  margin: 0
+
+  &__item
+    display: inline-block
+    width: 100%
+    color: $white
+    font-size: 1.2em
+    padding: 4px 0px 4px 50px
+    position: relative
+
+    @media all and (max-width: 1050px)
+      font-size: 1em
+
+    @media all and (max-width: 767px)
+      padding: 10px 0px 10px 50px
+
+    .icon
+      position: absolute
+      left: 0
+      top: 14px
+      svg
+        path
+          stroke: $electric
+
+  &--smaller-text-list
+    .list-of-facts-with-icons__item
+      font-size: 1em
+      padding: 16px 0 16px 70px
+
+      @media all and (max-width: 850px)
+        padding: 16px 0 16px 50px
+
+      .icon
+        top: 22px
+
+  &--violet-gray
+    .list-of-facts-with-icons__item
+      color: $softGray
+      .icon
+        svg
+          path
+            stroke: $violet
+
+.list-of-checks
+  list-style-type: none
+  padding: 0
+  margin: 0
+
+  li
+    font-size: 1.2em
+    padding: 12px 0 12px 40px
+    position: relative
+    color: $softGray
+
+    &::before
+      content: ""
+      width: 19px
+      height: 15px
+      background: url("../../img/icons/check-violet.svg") center center no-repeat
+      position: absolute
+      left: 0
+      @include translate-top(-50%)
+
+.list-with-icon-from-left
+  @media all and (max-width: 850px)
+    margin-top: 50px
+  @media all and (max-width: 767px)
+    margin-top: 10px
+  &__item
+    padding: 35px 0
+    &.sell
+      background: linear-gradient(to right, rgba(233,246,255,1) 0%, rgba(255,255,255,1) 100%)
+      @media all and (max-width: 767px)
+        background: linear-gradient(to right, rgba(233,246,255,1) 0%, rgba(240,249,255,1) 100%)
+
+    &__icon
+      width: 18%
+      position: relative
+
+      @media all and (max-width: 767px)
+        width: 23%
+
+      .icon
+        top: 3px
+        @include translate-left(-50%)
+    &__text
+      width: 82%
+
+      @media all and (max-width: 767px)
+        width: 77%
+
+      .title
+        @include headline-bold
+
+      p
+        width: 83%
+
+.elements-list
+  display: flex
+  flex-wrap: wrap
+  padding: 0
+  list-style-type: none
+  margin-top: 55px
+
+  &__item
+    width: 25%
+    padding: 7px 10px 7px 25px
+    cursor: default
+    position: relative
+    transition: color .2s ease-in-out
+    will-change: color
+
+    @media all and (max-width: 850px)
+      width: 33.333%
+
+    @media all and (max-width: 767px)
+      width: 100%
+
+    @media (hover: hover)
+      &:hover
+        color: $blue
+
+    &__icon-flag
+      position: absolute
+      left: 0
+      top: 8px
+      img
+        width: 15px
+        max-width: 15px
+
+  &--wrap
+    background: $white
+    padding: 60px
+    margin-top: 0
+    border: 1px solid $grayBorder
+    border-radius: 0 7px 7px 7px
+    margin-top: 1px
+
+    @media all and (max-width: 1050px)
+      padding: 30px 15px
+      border-radius: 0 0 7px 7px
+
+    @media all and (max-width: 767px)
+      padding: 20px 15px
+
+.tooltip 
+  position: relative
+  display: inline-block
+  
+.tooltip .tooltiptext 
+  visibility: hidden
+  width: 120px
+  background-color: #555
+  color: #fff
+  text-align: center
+  padding: 5px 0
+  border-radius: 6px
+  position: absolute
+  z-index: 1
+  bottom: 125%
+  left: 50%
+  margin-left: -60px
+  opacity: 0
+  transition: opacity 0.3s
+
+.tooltip .tooltiptext::after 
+  content: ""
+  position: absolute
+  top: 100%
+  left: 50%
+  margin-left: -5px
+  border-width: 5px
+  border-style: solid
+  border-color: #555 transparent transparent transparent
+
+.tooltip:hover .tooltiptext 
+  visibility: visible
+  opacity: 1
+

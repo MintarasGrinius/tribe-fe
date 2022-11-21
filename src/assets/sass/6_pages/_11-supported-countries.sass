@@ -1,0 +1,127 @@
+#intro
+  &.supported-list-top
+    @media all and (max-width: 850px)
+      .background
+        background: $blue url("../../img/single-images/supported-countries.png") center top no-repeat
+        height: calc(100% + 100px)
+    @media all and (max-width: 850px)
+      .background
+        background: $blue url("../../img/single-images/supported-countries-mobile.png") right top no-repeat
+        background-size: contain
+    .intro__content
+      @media all and (max-width: 850px)
+        flex-direction: column
+      &__part-image
+        width: 45%
+        position: relative
+
+        @media all and (max-width: 850px)
+          width: 100%
+          margin-top: 0
+          img
+            display: none
+
+      @media all and (max-width: 1500px)
+        &__part-text
+          width: 50%
+
+      @media all and (max-width: 850px)
+        &__part-text
+          width: 100%
+
+.country-dots
+  position: absolute
+  display: flex
+  align-items: center
+  flex-wrap: wrap
+  top: 70px
+  right: 10px
+  @media all and (max-width: 850px)
+    position: static
+
+  &__map-pin
+    width: 50px
+    height: 80px
+    background: url("../../img/icons/map-pin.svg") center center no-repeat
+    margin-right: 40px
+
+  &__text-wrap
+    background: $white
+    border-radius: 7px
+    height: 60px
+    padding-left: 30px
+    padding-right: 30px
+    font-size: 2.5em
+    font-weight: 700
+    position: relative
+    color: $dark
+    line-height: 60px
+    padding-top: 2px
+
+    @media all and (max-width: 767px)
+      display: none
+
+.search-if-supported
+  margin-top: 100px
+  &__search
+    border-bottom: 2px solid $borderBlue
+    max-width: 500px
+    padding-bottom: 5px
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+    .btn
+      margin-top: 0
+
+    input
+      width: calc(100% - 80px)
+      @include search_input
+
+      &::-webkit-input-placeholder
+        color: $white
+      &::-moz-placeholder
+        color: $white
+      &:-ms-input-placeholder
+        color: $white
+      &:-moz-placeholder
+        color: $white
+
+  &__is-supported
+    display: inline-flex
+    flex-wrap: wrap
+    align-items: center
+    padding-right: 35px
+    position: relative
+    margin-top: 28px
+
+  &__flag
+    width: 25px
+    height: 25px
+    min-width: 25px
+    min-height: 25px
+    border-radius: 50%
+    margin-right: 20px
+    overflow: hidden
+
+    @media all and (max-width: 767px)
+      margin-right: 10px
+
+    img
+      width: auto
+      height: 160%
+      margin-top: -7px
+      margin-left: -28%
+
+  &__text
+    font-size: 1.6em
+    color: $white
+    // font-family: $futura
+    font-weight: 500
+
+    @media all and (max-width: 767px)
+      font-size: 1.2em
+
+  .icon
+    right: 0
+    @include translate-top(-50%)

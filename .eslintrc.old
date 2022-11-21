@@ -1,0 +1,83 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended", // Uses the recommended rules from @eslint-plugin-react
+    "plugin:prettier/recommended" // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": { "jsx": true },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": ["react"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "indent": [
+      "error",
+      2,
+      {
+        "SwitchCase": 1,
+        "ignoredNodes": ["JSXElement *", "JSXElement"]
+      }
+    ],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single", { "avoidEscape": true }],
+    "semi": ["error", "never"],
+    "no-undef": 0,
+    "array-element-newline": ["error", "consistent"],
+    "array-bracket-newline": ["error", "consistent"],
+    "react/no-unknown-property": 1,
+    "react/react-in-jsx-scope": 0,
+    "react/self-closing-comp": 1,
+    "react/sort-comp": 1,
+    "react/sort-prop-types": 1,
+    "react/jsx-boolean-value": 1,
+    "react/jsx-closing-bracket-location": 1,
+    "react/jsx-curly-spacing": 1,
+    "react/jsx-indent-props": [2, 2],
+    "react/jsx-indent": [1, 2],
+    "react/jsx-key": 1,
+    "react/jsx-no-duplicate-props": 1,
+    "react/jsx-no-literals": 1,
+    "react/jsx-no-target-blank": 1,
+    "react/jsx-no-undef": 1,
+    "react/jsx-pascal-case": 1,
+    "react/jsx-sort-props": 1,
+    "react/jsx-uses-react": 1,
+    "react/jsx-uses-vars": 1,
+    "react/display-name": [0],
+    "react/prop-types": 0
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "extends": [
+        "plugin:@typescript-eslint/recommended", // Uses the recommended rules from the @typescript-eslint/eslint-plugin
+        "prettier/@typescript-eslint" // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
+      ],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "ecmaFeatures": { "jsx": true },
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+      },
+      "rules": {
+        "camelcase": "off",
+        "@typescript-eslint/camelcase": ["error", { "properties": "never" }],
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "react/prop-types": "off"
+      }
+    }
+  ]
+}

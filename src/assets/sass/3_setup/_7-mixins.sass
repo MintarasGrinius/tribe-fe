@@ -1,0 +1,61 @@
+@mixin round-button
+  border-radius: 4px 50px 50px 50px
+
+@mixin translate-top($top)
+  top: 50%
+  transform: translateY($top)
+
+@mixin translate-left($left)
+  left: 50%
+  transform: translateX($left)
+
+@mixin translate-center($left, $top)
+  transform: translate($left, $top)
+
+@mixin box-shadow
+  box-shadow: 0px 5px 11px 0px rgba(29,0,62,0.07)
+  transition: box-shadow .2s ease-in-out
+
+@mixin blueCardBefore
+  &::before
+    content: ""
+    height: 70%
+    width: 400px
+    background: $skyBlue
+    position: absolute
+    transform: rotate(0deg)
+    left: -20px
+    bottom: -20px
+    z-index: -1
+    border-radius: 14px
+    opacity: 0
+    transition: transform 1.3s $cubic ,opacity .2s ease
+
+    @media all and (max-width: 767px)
+      content: none
+
+@mixin search_input
+  appearance: none
+  border: 0
+  background: transparent
+  height: 30px
+  font-family: $font-primary
+  font-size: 1em
+  color: $white
+
+  &::-webkit-input-placeholder
+    color: $inputPlaceholder
+  &::-moz-placeholder
+    color: $inputPlaceholder
+  &:-ms-input-placeholder
+    color: $inputPlaceholder
+  &:-moz-placeholder
+    color: $inputPlaceholder
+
+@mixin zoomElement
+  border: 1px solid $grayBorder
+  transition: all .3s ease
+
+  @media (hover: hover)
+    &:hover
+      border: 1px solid $blue

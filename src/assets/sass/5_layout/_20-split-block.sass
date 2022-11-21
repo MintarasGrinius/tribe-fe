@@ -1,0 +1,38 @@
+.split-block
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  width: 100%
+
+  &--align-center
+    align-items: center
+
+  @media all and (max-width: 850px)
+    flex-direction: column
+    &--column-reverse
+      flex-direction: column-reverse
+
+  &__item
+    z-index: 0
+    width: 48%
+
+    .title-standard
+      margin-bottom: 20px
+
+    .about-us-bottom &
+      width: 45%
+
+      .text-box
+        margin-bottom: 20px
+
+      @media all and (max-width: 850px)
+        width: 100%
+
+    @media all and (max-width: 850px)
+      width: 100%
+      &.text
+        padding-top: 50px
+
+    @media all and (max-width: 850px)
+      .image
+        margin-top: 40px

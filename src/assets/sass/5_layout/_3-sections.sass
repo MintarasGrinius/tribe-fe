@@ -1,0 +1,367 @@
+section
+  position: relative
+
+#intro.intro-main-padding
+  padding-top: 100px
+  height: unset
+
+  @media all and (min-width: 1050px)
+    padding-top: 130px
+
+#intro.plugin-section
+  @media all and (max-width: 850px)
+    .background
+      height: calc(100% + 100px)
+    .intro__content
+      flex-direction: column
+  .top-section-subtitle
+    width: 100%
+  .intro__content
+    &__part-text
+      width: 44%
+
+      @media all and (max-width: 1500px)
+        width: 46%
+
+      @media all and (max-width: 1400px)
+        width: 50%
+
+      @media all and (max-width: 850px)
+        width: 100%
+        margin-top: 40px
+
+    &__part-image
+      width: 50%
+
+      @media all and (max-width: 1400px)
+        width: 47%
+
+      @media all and (max-width: 850px)
+        width: 100%
+        margin-top: 0
+
+.not-found
+  .top-section-subtitle
+    margin: 0 auto
+  .intro__content
+    &__part-text
+      width: 35%
+      text-align: center
+
+      @media all and (max-width: 850px)
+        width: 100%
+      h1
+        font-size: 15em
+
+        @media all and (max-width: 1200px)
+          font-size: 10em
+
+        @media all and (max-width: 767px)
+          font-size: 9em
+
+    &__part-image
+      width: 65%
+
+      @media all and (max-width: 850px)
+        width: 100%
+
+  @media all and (max-width: 850px)
+    .mask-line
+      display: none
+
+#intro.buttons-top
+  .intro__content
+    &__part-text
+      width: 50%
+
+      @media all and (max-width: 850px)
+        width: 100%
+
+  @media all and (max-width: 767px)
+    .intro__content
+      &__part-image
+        display: none
+    .background
+      height: calc(100% + 100px)
+
+.big-pad
+  padding-top: 240px
+  padding-bottom: 200px
+
+  @media all and (max-width: 1300px)
+    &--less
+      padding-top: 150px
+      padding-bottom: 0
+
+      @media all and (max-width: 850px)
+        padding-top: 40px
+
+  @media all and (max-width: 1050px)
+    padding-top: 140px
+    padding-bottom: 120px
+
+  @media all and (max-width: 850px)
+    padding-top: 100px
+    padding-bottom: 80px
+
+// Section where explains in cards why
+.big-pad-top
+  padding-top: 200px
+  position: relative
+
+  @media all and (max-width: 1300px)
+    padding-top: 150px
+
+  @media all and (max-width: 850px)
+    padding-top: 100px
+
+  @media all and (max-width: 767px)
+    padding-top: 70px
+
+  &.big-pad-top--more-padding-top
+    padding-top: 195px
+
+    @media all and (max-width: 850px)
+      padding-top: 100px
+
+    @media all and (max-width: 767px)
+      &.buttons
+        padding-top: 170px
+
+  &.big-pad-top--more-padding-top-trade
+    padding-top: 240px
+
+    @media all and (max-width: 1300px)
+      padding-top: 200px
+
+    @media all and (max-width: 1050px)
+      padding-top: 150px
+
+    @media all and (max-width: 767px)
+      padding-top: 100px
+
+#long-card
+  padding: 150px 0
+
+  &.no-padding
+    padding: 0
+
+  @media all and (max-width: 1050px)
+    padding: 110px 0
+
+  @media all and (max-width: 850px)
+    padding: 70px 0
+
+  @media all and (max-width: 767px)
+    padding: 50px 0
+
+.download-assets-block
+  padding-bottom: 170px
+  @media all and (max-width: 850px)
+    padding-bottom: 100px
+
+.sort-by-section
+  padding-top: 200px
+  position: relative
+  padding-bottom: 100px
+
+  @media all and (max-width: 1050px)
+    padding-top: 140px
+
+  @media all and (max-width: 850px)
+    padding-top: 70px
+
+  .sort-by-select
+    margin-bottom: 50px
+
+  .mask-line
+    top: 50%
+
+.merchant-list-vertical
+  padding-top: 125px
+  padding-bottom: 150px
+  background: linear-gradient(#ffffff 0%, #F9FCFF 100%)
+
+  @media all and (max-width: 1050px)
+    padding-bottom: 90px
+    padding-top: 100px
+
+  @media all and (max-width: 850px)
+    padding-top: 70px
+    padding-bottom: 30px
+
+.gradient
+  background: linear-gradient(#EEF6FD 0%, #fff 100%)
+
+.support-promote-pad
+  padding: 50px 0 65px 0
+  border-bottom: 1px solid $softBorder
+
+#blog-cards
+  padding: 50px 0
+
+  @media all and (max-width: 850px)
+    .grid
+      padding: 0 10px
+
+    .subtitle-section
+      padding-left: 20px
+      padding-right: 20px
+      margin-bottom: 10px
+
+article
+  padding: 65px 0px
+
+.pad-top-bottom
+  padding: 100px 0
+
+  @media all and (max-width: 1050px)
+    padding: 90px 0
+
+  @media all and (max-width: 850px)
+    padding: 70px 0
+
+  .subtitle
+    margin-bottom: 40px
+
+.section-border-top
+  border-top: 1px solid $softBorder
+
+.terms-with-cards
+  position: relative
+  padding-bottom: 120px
+
+  @media all and (max-width: 850px)
+    padding-bottom: 30px
+
+  .center-intro-arrow
+    bottom: 60px
+
+.load-more-section
+  padding-bottom: 100px
+  padding-top: 65px
+
+  .btn--rounded
+    margin-top: 40px
+
+  @media all and (max-width: 850px)
+    .grid
+      padding-left: 10px
+      padding-right: 10px
+
+    .subtitle-section
+      padding-left: 20px
+      padding-right: 20px
+      margin-bottom: 10px
+
+.compliance-section
+  padding-top: 55px
+  padding-bottom: 120px
+  @media all and (max-width: 850px)
+    padding-top: 50px
+    .grid
+      flex-direction: column-reverse
+  .left-part
+    width: 30%
+
+    @media all and (max-width: 850px)
+      width: 100%
+
+  .right-part
+    width: 70%
+    padding-left: 45px
+
+    @media all and (max-width: 850px)
+      width: 100%
+      padding-left: 0
+
+  .support-report
+    text-align: center
+
+    .social-media
+      justify-content: center
+
+
+.about-us-bottom
+  padding-top: 130px
+  padding-bottom: 180px
+  @media all and (max-width: 850px)
+    padding-top: 90px
+    padding-bottom: 90px
+  .grid
+    align-items: center
+    @media all and (max-width: 850px)
+      flex-direction: column
+
+#download-app-block
+  background: $skyBlue
+  padding: 60px 0
+
+.integration-top
+  padding-bottom: 150px
+
+  @media all and (max-width: 850px)
+    padding-bottom: 40px
+
+  @media all and (max-width: 767px)
+    padding-top: 50px
+
+  @media all and (max-width: 767px)
+    .cards
+      margin-top: 0
+
+.supported-coins-top
+  padding-top: 50px
+  padding-bottom: 40px
+
+.exchange-rates-top-block
+  padding-bottom: 80px
+  padding-top: 50px
+
+  @media all and (max-width: 767px)
+    padding-bottom: 60px
+
+.visible-in-mobile
+  display: none
+
+  @media all and (max-width: 767px)
+    display: block
+    margin-top: 150px
+
+@media all and (max-width: 850px)
+  .contact-u-block
+    padding-top: 20px
+    padding-bottom: 40px
+
+@media all and (max-width: 767px)
+  .promote-block
+    padding-top: 25px
+
+.milestones-result
+  padding-top: 130px
+  padding-bottom: 200px
+
+  @media all and (max-width: 767px)
+    padding-top: 60px
+    padding-bottom: 130px
+
+  .grid
+    align-items: center
+    max-width: 1040px
+
+.coingate-people
+  padding-top: 120px
+  position: relative
+  &::before
+    content: ""
+    width: 100%
+    height: 685px
+    background: url("../../img/backgrounds/bottom-milestone.svg") center top no-repeat
+    background-size: cover
+    z-index: -1
+    position: absolute
+    top: 0
+    @include translate-left(-50%)
+
+  @media all and (max-width: 850px)
+    padding-top: 70px

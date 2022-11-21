@@ -1,0 +1,131 @@
+.trade-page-section
+  .intro__content
+    .part-image
+       width: 50%
+
+       @media all and (max-width: 850px)
+         width: 100%
+
+    @media all and (max-width: 1500px)
+      .part-text
+        width: 50%
+
+    @media all and (max-width: 850px)
+      .part-text
+        width: 100%
+
+.block-with-netgative-top
+  position: relative
+  margin-top: -100px
+
+  @media all and (max-width: 1050px)
+    padding-bottom: 100px
+    margin-top: 0
+    padding-top: 70px
+
+  @media all and (max-width: 767px)
+    padding-bottom: 50px
+
+  &.background-section
+    &::before
+      bottom: -200px
+
+      @media all and (max-width: 1050px)
+        bottom: -170px
+      @media all and (max-width: 850px)
+        bottom: 60px
+
+  @media all and (max-width: 767px)
+    &--trade-page
+      .grid
+        padding-left: 0
+        padding-right: 0
+
+        .text-above-title, .text-block__title
+          padding: 0 30px
+
+
+.trade-text-imge-two-columns
+  padding-top: 150px
+
+  @media all and (max-width: 1050px)
+    padding-top: 0
+
+  &.more-padding-trade
+    padding-top: 270px
+
+    @media all and (max-width: 1300px)
+      padding-top: 200px
+
+    @media all and (max-width: 1050px)
+      padding-top: 150px
+
+    @media all and (max-width: 767px)
+      padding-top: 100px
+
+.table-with-options
+  width: 670px
+  background: $white
+  border: 1px solid $softBorder
+  border-radius: 7px
+  margin-top: 90px
+  position: relative
+
+  @media all and (max-width: 1200px)
+    margin-top: 150px
+
+  @media all and (max-width: 850px)
+    margin-top: 90px
+
+  &--head
+    align-items: center
+    border-bottom: 1px solid $softBorder
+    &__item
+      flex: 1
+      position: relative
+      padding: 23px 0
+      font-size: 1.3em
+      // font-family: $futura
+      font-weight: 600
+      color: $dark
+      border-right: 1px solid $softBorder
+      text-align: center
+      cursor: pointer
+
+      &.active
+        background: $skyBlue
+
+      &:last-of-type
+        border-right: 0
+
+      p
+        padding-left: 25px
+        position: relative
+        display: inline-block
+
+        .icon
+          left: 0
+          @include translate-top(-50%)
+
+  &--body
+    align-items: center
+    &__item
+      width: 50%
+      height: 60px
+      display: flex
+      align-items: center
+      border-bottom: 1px solid $softBorder
+      border-right: 1px solid $softBorder
+      padding-left: 60px
+
+      .image
+        width: 100px
+
+      p
+        font-weight: 700
+
+      &:nth-child(2n)
+        border-right: 0
+
+      &:nth-last-child(-n+2)
+        border-bottom: 0

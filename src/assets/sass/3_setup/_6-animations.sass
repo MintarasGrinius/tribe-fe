@@ -1,0 +1,86 @@
+.reveal-each
+  >*
+    transform: translate3d(0,-50px,0)
+    opacity: 0
+    transition: transform 1.3s $cubic ,opacity 1s ease
+
+    @media all and (max-width: 850px)
+      opacity: 1
+      transition: none
+      transform: none
+
+  &.reveal-me
+    >*
+      opacity: 1
+      transform: translate3d(0,0,0)
+
+      @media all and (max-width: 850px)
+        transform: none
+
+      @for $i from 1 through 30
+        &:nth-child(#{$i}n)
+          transition: transform 1s $cubic 100ms + 50ms * $i, opacity .6s ease 100ms + 50ms * $i, box-shadow .4s ease
+
+          @media all and (max-width: 850px)
+            transition: none
+
+.reveal-side
+  >*
+    opacity: 0
+    transition: transform 1.3s $cubic ,opacity .2s ease
+
+    @media all and (max-width: 850px)
+      opacity: 1
+      transition: none
+      z-index: 1
+
+    &:nth-child(1)
+      transform: translate3d(-50px,0px,0)
+
+      @media all and (max-width: 850px)
+        transform: none // translate3d(0,-50px,0)
+
+    &:nth-child(2)
+      transform: translate3d(50px,0px,0)
+
+      @media all and (max-width: 850px)
+        transform: none // translate3d(0,-50px,0)
+
+  &.reveal-me
+    >*
+      opacity: 1
+      transform: translate3d(0,0,0)
+
+      @media all and (max-width: 850px)
+        transform: none
+
+      &:nth-child(1)
+        transition: transform 1.5s $cubic, opacity .4s ease, box-shadow .4s ease
+
+        @media all and (max-width: 850px)
+          transition: none
+
+      &:nth-child(2)
+        transition: transform 1.5s $cubic 300ms, opacity .4s ease 300ms, box-shadow .4s ease
+
+        @media all and (max-width: 850px)
+          transition: none // transform 1.5s $cubic 100ms, opacity .4s ease 100ms, box-shadow .4s ease
+
+.reveal-animation
+  opacity: 0
+  transition: transform 1.3s $cubic ,opacity .2s ease
+  transform: translate3d(50px,0px,0)
+
+  @media all and (max-width: 850px)
+    opacity: 1
+    transition: none
+    transform: none
+
+  &.reveal-me
+    opacity: 1
+    transform: translate3d(0,0,0)
+    transition: transform 1.5s $cubic, opacity .4s ease
+
+    @media all and (max-width: 850px)
+      transition: none
+      transform: none

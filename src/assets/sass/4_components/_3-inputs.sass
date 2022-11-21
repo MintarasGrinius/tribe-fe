@@ -1,0 +1,227 @@
+.mail-form
+  position: relative
+  width: 425px
+  margin-top: 30px
+  display: block
+
+  @media all and (max-width: 767px)
+    width: 100%
+
+  &::before
+    content: ""
+    width: calc(100% - 110px)
+    background: $white
+    height: 100%
+    position: absolute
+    left: 0
+    top: 0
+    border-radius: 25px 0 0 25px
+
+  .for-input
+    display: flex
+    flex-wrap: wrap
+    padding-left: 25px
+    position: relative
+    z-index: 2
+    align-items: center
+
+    i
+      height: 14px
+      width: 20px
+
+      svg
+        width: 100%
+
+    input
+      height: 50px
+      border: 0
+      font-family: $font-primary
+      color: $softGray
+      margin-left: 18px
+      width: 210px
+      padding-right: 15px
+      padding-bottom: 0
+      padding-top: 0
+
+      @media all and (max-width: 767px)
+        width: calc(100% - 182px)
+
+      &::-webkit-input-placeholder
+        font-family: $font-primary
+        color: $softGray
+
+      &:-ms-input-placeholder
+        font-family: $font-primary
+        color: $softGray
+
+      &::placeholder
+        font-family: $font-primary
+        color: $softGray
+
+    .btn
+      min-width: 144px
+      margin-top: 0
+
+      // @media all and (max-width: 767px)
+      //   width: 100%
+      //   border-radius: 0px 0px 7px 7px
+
+// .form__group
+//   input, textarea
+//     border: 0
+//     outline: 0
+//     height: 40px
+//     color: $color-primary
+//     font-family: $font-primary
+//     width: 100%
+//     padding: 0
+//     transition: color .2s ease-in-out
+
+//     @media (hover: hover)
+//       &:hover
+//         color: $dark
+
+//         &::-webkit-input-placeholder
+//           color: $dark
+//         &::-moz-placeholder
+//           color: $dark
+//         &:-ms-input-placeholder
+//           color: $dark
+//         &:-moz-placeholder
+//           color: $dark
+
+//     &::-webkit-input-placeholder
+//       color: $color-primary
+//     &::-moz-placeholder
+//       color: $color-primary
+//     &:-ms-input-placeholder
+//       color: $color-primary
+//     &:-moz-placeholder
+//       color: $color-primary
+
+//   textarea
+//     min-height: 90px
+//     resize: none
+//     padding-top: 10px
+//     line-height: 1.2em
+
+.select
+  position: relative
+  cursor: pointer
+
+  &.single
+    width: 100%
+    .current
+      color: $color-primary
+      width: 100%
+      display: block
+      padding-top: 12px
+      padding-bottom: 12px
+
+  .current
+    color: $dark
+    position: relative
+    padding-right: 20px
+
+    &::before
+      content: ""
+      width: 15px
+      height: 15px
+      background: url("../../img/icons/select-arrow-down.svg") center center no-repeat
+      background-size: 10px
+      right: 0
+      position: absolute
+      @include translate-top(-50%)
+  .list
+    opacity: 0
+    visibility: hidden
+    z-index: -1
+    position: absolute
+    top: 30px
+    left: 0
+    background: $white
+    padding: 0
+    margin: 0
+    list-style-type: none
+    width: 100%
+    color: $dark
+    z-index: 2
+    padding: 10px
+    border-radius: 5px
+    left: -10px
+    width: calc(100% + 20px)
+    transition: opacity .3s ease, visibility .3s ease, z-index .3s ease
+    @include box-shadow
+
+    li
+      padding: 7px 0
+      transition: color .2s ease-in-out
+      will-change: color
+
+      @media all and (max-width: 1050px)
+        padding: 15px 0
+
+      &[data-display]
+        padding: 0
+
+      @media (hover: hover)
+        &:hover
+          color: $blue
+
+  &.open
+    .current
+      &::before
+        transform: translateY(-50%) rotate(180deg)
+    .list
+      opacity: 1
+      visibility: visible
+      z-index: 3
+
+  @media (hover: hover)
+    &:hover
+      .current
+        color: $dark
+
+.checkbox
+  position: relative
+  .checkbox-input
+    position: absolute
+    opacity: 0
+    width: 100%
+    &:checked + .checkbox-label
+      &::after
+        opacity: 1
+
+  .checkbox-label
+    display: inline-block
+    position: relative
+    padding: 5px 0 5px 35px
+    color: $color-primary
+    cursor: pointer
+    transition: color .2s ease-in-out
+
+    &::before
+      content: ""
+      width: 18px
+      height: 18px
+      border: 1px solid $grayBorder
+      border-radius: 50%
+      position: absolute
+      left: 0
+      top: 4px
+
+    &::after
+      content: ""
+      background: url("../../img/icons/chec-electric.svg") center center no-repeat
+      width: 23px
+      height: 23px
+      position: absolute
+      left: 2px
+      top: 0px
+      opacity: 0
+      transition: opacity .3s ease
+
+  @media (hover: hover)
+    &:hover
+      .checkbox-label
+        color: $dark

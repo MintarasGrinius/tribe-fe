@@ -1,0 +1,41 @@
+name: Deployment to Vercel
+
+on:
+  issue_comment:
+    types:
+      - created
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    name: Deploy Job
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Parse Event Data
+        id: event-data
+        uses: coingate/workflow-event-action@master
+        with:
+          github-token: '${{ secrets.GITHUB_TOKEN }}'
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ steps.event-data.outputs.ref }}
+      - name: Add reaction
+        uses: peter-evans/create-or-update-comment@v2
+        if: ${{ github.event.comment.id != '' && contains(github.event.comment.body, '/preview') }}
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          reactions: rocket
+      - name: Deploy Step
+        uses: coingate/vercel-deploy-action@master
+        with:
+          comment-trigger: '/preview'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          sentry-auth-token: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          vercel-scope: coingate
+          vercel-project-name: homepage
+          ref: ${{ steps.event-data.outputs.ref }}
+          sha: ${{ steps.event-data.outputs.sha }}
+          commit: ${{ steps.event-data.outputs.commit }}

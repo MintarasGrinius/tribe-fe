@@ -1,0 +1,171 @@
+.current-rate-block
+  &--head
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    .headline
+      @include headline-bold
+      font-size: 1.6em
+      margin-right: 45px
+
+      p
+        color: $blue
+        display: inline-block
+
+  &--amount
+    font-size: 3.4em
+    font-weight: 700
+    color: $dark
+    margin-top: 10px
+
+  &--text
+    width: 90%
+    margin-top: 25px
+
+  &--search
+    background: $white
+    @include box-shadow
+    height: 65px
+    border-radius: 65px
+    width: 100%
+    padding: 0 90px 0 40px
+    position: relative
+    display: flex
+    margin-top: 20px
+
+    @media all and (max-width: 767px)
+      height: 55px
+      padding: 0 60px 0 20px
+
+    .search-box
+      width: 100%
+
+    .search-input
+      @include search-input
+      width: 100%
+      height: 100%
+      color: $color-primary
+
+      &::-webkit-input-placeholder
+        color: #BBC0CD
+      &::-moz-placeholder
+        color: #BBC0CD
+      &:-ms-input-placeholder
+        color: #BBC0CD
+      &:-moz-placeholder
+        color: #BBC0CD
+
+    .btn
+      position: absolute
+      @include translate-top(-50%)
+      right: 30px
+      background: url("../../img/icons/search.svg") center center no-repeat
+
+      @media all and (max-width: 767px)
+        right: 10px
+
+.md-search-block
+  width: 45vw
+  margin: 0 auto
+
+  @media all and (max-width: 850px)
+    width: 80vw
+
+.all-rates-prices
+  border-radius: 7px
+  @include box-shadow
+
+  @media all and (max-width: 850px)
+    margin-top: 40px
+
+.rates
+  &__block
+    display: flex
+    flex-wrap: wrap
+    height: 60px
+    background: $white
+    border-bottom: 1px solid $grayBorder
+
+    &:first-child
+      border-radius: 7px 7px 0 0
+
+    &:last-child
+      border-radius: 0px 0px 7px 7px
+      border-bottom: 0
+
+    &:nth-child(2n)
+      background: #FAFBFD
+
+    &__title
+      width: 30%
+      padding-left: 35px
+      padding-right: 10px
+      border-right: 1px solid $grayBorder
+      display: flex
+      align-items: center
+
+      @media all and (max-width: 1050px)
+        padding-left: 15px
+
+      @media all and (max-width: 767px)
+        width: 40%
+        padding-left: 25px
+        padding-right: 10px
+
+    &__price
+      width: 70%
+      justify-content: center
+      display: flex
+      align-items: center
+      font-weight: 700
+      color: $dark
+
+      @media all and (max-width: 767px)
+        width: 60%
+
+.list-of-rates
+  padding-top: 70px
+  padding-bottom: 130px
+  @media all and (max-width: 767px)
+    padding-top: 50px
+    .grid
+      flex-direction: column
+  &__item
+    width: 50%
+    @media all and (max-width: 767px)
+      width: 100%
+    &:first-child
+      padding-right: 45px
+
+      @media all and (max-width: 767px)
+        padding-right: 0
+
+    &:nth-child(2)
+      padding-left: 45px
+      border-left: 1px solid $grayBorder
+
+      @media all and (max-width: 767px)
+        padding-left: 0
+        border-left: 0
+
+  .list
+    padding-left: 0
+    li
+      display: flex
+      justify-content: space-between
+      align-items: center
+      padding: 10px 0
+      align-items: flex-start
+
+    &__title
+      line-height: 1
+      @media all and (max-width: 767px)
+        width: 60%
+
+    &__rate
+      color: $dark
+      font-weight: 700
+
+      @media all and (max-width: 767px)
+        width: 40%
+        text-align: right

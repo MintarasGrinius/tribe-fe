@@ -1,0 +1,120 @@
+#two-cards
+  background: $skyBlue
+  padding: 60px 0
+
+  @media all and (max-width: 767px)
+    padding: 40px 0
+
+  &.white
+    background: $white
+    padding: 140px 0 160px 0
+
+    @media all and (max-width: 1300px)
+      padding: 100px 0 120px 0
+    @media all and (max-width: 1050px)
+      padding: 80px 0 100px 0
+
+    @media all and (max-width: 767px)
+      padding: 40px 0 60px 0
+
+  &.no-background-for-section
+    background: none
+
+  &.plugins
+    margin-top: 150px
+
+    @media all and (max-width: 767px)
+      margin-top: 60px
+
+  .grid
+    justify-content: space-between
+
+    @media all and (max-width: 850px)
+      flex-direction: column
+
+.two-cards
+  &__item
+    padding: 55px
+    background: $white
+    display: flex
+    width: 48%
+    align-items: center
+    position: relative
+    border-radius: 7px
+    z-index: 2
+    @include box-shadow
+    transition: box-shadow .2s ease-in-out
+
+    @media (hover: hover)
+      &:hover
+        box-shadow: 0px 5px 11px 0px $hoverBlue
+
+        .icon
+          transform: translateX(10px)
+
+    @media all and (max-width: 1050px)
+      padding: 35px 35px 55px 35px
+
+    @media all and (max-width: 850px)
+      width: 100%
+      margin-bottom: 30px
+
+    @media all and (max-width: 767px)
+      padding: 25px 25px 70px 25px
+
+      &:last-child
+        margin-bottom: 0
+
+    &__text
+      width: 60%
+
+      @media all and (max-width: 850px)
+        width: 70%
+
+      @media all and (max-width: 767px)
+        width: 100%
+
+      &__title
+        color: $dark
+        margin-bottom: 15px
+
+      p
+        max-height: 75px
+        overflow: hidden
+
+    &__image
+      width: 40%
+      padding-right: 30px
+
+      @media all and (max-width: 850px)
+        width: 30%
+
+      @media all and (max-width: 767px)
+        display: none
+
+    .icon--arrow-forward-long
+      left: calc(40% + 10px)
+      bottom: 35px
+      transition: transform .4s ease
+      will-change: transform
+
+      @media all and (max-width: 1050px)
+        bottom: 30px
+
+      @media all and (max-width: 850px)
+        left: calc(30% + 20px)
+
+      @media all and (max-width: 767px)
+        left: 25px
+
+    &--blue
+      background: $blue
+      color: $white
+
+      .two-cards__item__text__title
+        color: $white
+
+      .icon
+        svg
+          path
+            stroke: $white
