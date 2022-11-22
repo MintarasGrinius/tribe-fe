@@ -2,10 +2,10 @@ import { PlannedEvent } from '@/components/card'
 import Layout from '@/components/layout'
 import { UserContext } from '@/components/user'
 import { authHeaders, backURL } from '@/components/user/env'
-import { makeStyles } from '@material-ui/core'
 import axios from 'axios'
 import React, { useContext, useEffect } from 'react'
 import DashboardIcon from '@material-ui/icons/Dashboard'
+import { makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles({
   container: {

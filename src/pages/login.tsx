@@ -2,15 +2,25 @@ import { useContext, useEffect, useState } from 'react'
 import GeneralLayout from '@/components/layout/general-layout'
 import { UserContext } from '@/components/user'
 import { SessionContext } from '@/components/session/context'
-import { getSession, saveSession } from '@/components/user/sessions'
+import { saveSession } from '@/components/user/sessions'
 import axios from 'axios'
-import { Field, Form, Formik } from 'formik'
-import { makeStyles } from '@material-ui/core'
+import { Form, Formik } from 'formik'
+import { Button, makeStyles, TextField } from '@material-ui/core'
+import { ButtonProps, styled } from '@material-ui/core'
+
+const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
+  color: '#fff',
+  backgroundColor: '#1a73e8',
+  '&:hover': {
+    backgroundColor: '#1c7eff',
+  },
+}))
 
 const useStyles = makeStyles(
   {
     container: {
       padding: '0 2rem',
+      background: 'linear-gradient(195deg, rgb(66, 66, 74), rgb(25, 25, 25))',
     },
     main: {
       minHeight: '100vh',
@@ -26,6 +36,13 @@ const useStyles = makeStyles(
       lineHeight: '1.15',
       fontSize: '4rem',
       textAlign: 'center',
+      '& b': {
+        background:
+          'linear-gradient(195deg, rgb(73, 163, 241), rgb(26, 115, 232))',
+        '-webkit-text-fill-color': 'transparent',
+        '-webkit-background-clip': 'text',
+        'background-clip': 'text',
+      },
     },
     form: {
       display: 'flex',
@@ -42,6 +59,25 @@ const useStyles = makeStyles(
       justifyContent: 'end',
       '& label': {
         marginRight: '0.5rem',
+        margin: 'auto 0',
+      },
+    },
+    textField: {
+      borderColor: 'white',
+      borderImage:
+        'linear-gradient(195deg, rgb(73, 163, 241), rgb(26, 115, 232))',
+
+      '& .MuiOutlinedInput-notchedOutline': {
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: 'rgb(26, 115, 232)',
+      },
+      '&:hover': {
+        borderColor: '#3f51b5 !important',
+      },
+      '& input': {
+        color: '#7F88A0',
+        height: '10px',
       },
     },
   },
@@ -87,7 +123,9 @@ const Login: React.FC = () => {
     <GeneralLayout>
       <div className={classes.container}>
         <main className={classes.main}>
-          <h1 className={classes.title}>Welcome to trib!</h1>
+          <h1 className={classes.title}>
+            Welcome to <b>trib</b>!
+          </h1>
 
           <Formik
             initialValues={{
@@ -99,13 +137,31 @@ const Login: React.FC = () => {
             <Form className={classes.form}>
               <div className={classes.field}>
                 <label htmlFor="email">Email: </label>
-                <Field type="email" name="email" />
+                <TextField
+                  classes={{ root: classes.textField }}
+                  variant="outlined"
+                  size="small"
+                  type="email"
+                  name="email"
+                />
               </div>
               <div className={classes.field}>
                 <label htmlFor="password">Password: </label>
-                <Field type="password" name="password" />
+                <TextField
+                  classes={{ root: classes.textField }}
+                  size="small"
+                  variant="outlined"
+                  type="password"
+                  name="password"
+                />
               </div>
-              <button type="submit">Submit</button>
+              <ColorButton
+                color="linear-gradient(195deg, rgb(73, 163, 241), rgb(26, 115, 232))"
+                type="submit"
+                variant="contained"
+              >
+                Submit
+              </ColorButton>
             </Form>
           </Formik>
         </main>
