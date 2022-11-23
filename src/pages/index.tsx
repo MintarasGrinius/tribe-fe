@@ -1,4 +1,4 @@
-import { PlannedEvent } from '@/components/card'
+import EventCard, { PlannedEvent } from '@/components/card'
 import Layout from '@/components/layout'
 import { UserContext } from '@/components/user'
 import { authHeaders, backURL } from '@/components/user/env'
@@ -13,6 +13,8 @@ const useStyles = makeStyles({
     height: '100vh',
     width: '100vw',
     padding: '1rem',
+    display: 'flex',
+    backgroundColor: 'rgb(240, 242, 245)',
   },
   sidebar: {
     height: '100%',
@@ -56,6 +58,10 @@ const useStyles = makeStyles({
         'rgb(0 0 0 / 10%) 0rem 0.25rem 0.375rem -0.0625rem, rgb(0 0 0 / 6%) 0rem 0.125rem 0.25rem -0.0625rem',
     },
   },
+  innerContainer: {
+    paddingLeft: '1rem',
+    flex: 1,
+  },
 })
 
 const Dashboard = () => {
@@ -81,6 +87,9 @@ const Dashboard = () => {
     <Layout description={'Descriptions page'} title={'Descriptions'}>
       <div className={classes.container}>
         <Sidebar />
+        <div className={classes.innerContainer}>
+          {events[0] && <EventCard event={events[0]} />}
+        </div>
       </div>
     </Layout>
   )
