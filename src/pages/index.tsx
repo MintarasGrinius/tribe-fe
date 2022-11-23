@@ -61,6 +61,9 @@ const useStyles = makeStyles({
   innerContainer: {
     paddingLeft: '1rem',
     flex: 1,
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '1.5rem',
   },
 })
 
@@ -88,7 +91,9 @@ const Dashboard = () => {
       <div className={classes.container}>
         <Sidebar />
         <div className={classes.innerContainer}>
-          {events[0] && <EventCard event={events[0]} />}
+          {events.map((a) => (
+            <EventCard event={a} />
+          ))}
         </div>
       </div>
     </Layout>

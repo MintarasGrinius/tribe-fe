@@ -43,6 +43,9 @@ const useStyles = makeStyles({
     backgroundColor: '#fff',
     padding: '0 1rem 1rem',
     borderRadius: '0.75rem',
+    boxShadow:
+      'rgb(0 0 0 / 10%) 0rem 0.25rem 0.375rem -0.0625rem, rgb(0 0 0 / 6%) 0rem 0.125rem 0.25rem -0.0625rem',
+    overflow: 'visible',
   },
   media: {
     width: '280px',
@@ -51,6 +54,8 @@ const useStyles = makeStyles({
     margin: '0 auto',
     position: 'relative',
     bottom: '1.3rem',
+    boxShadow:
+      'rgb(0 0 0 / 14%) 0rem 0.25rem 1.25rem 0rem, rgb(0 187 212 / 40%) 0rem 0.4375rem 0.625rem -0.3125rem',
   },
   contentContainer: {
     padding: '0.5rem',
@@ -88,6 +93,7 @@ const useStyles = makeStyles({
     fontWeight: 300,
     marginTop: 'auto',
     display: 'flex',
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
   icon: {
@@ -113,6 +119,7 @@ const EventCard = ({
   },
 }: Props) => {
   const classes = useStyles()
+  const data = new Date(time)
   return (
     <div className={classes.container}>
       <CardMedia
@@ -123,11 +130,14 @@ const EventCard = ({
         alt="green iguana"
       />
       <div className={classes.contentContainer}>
-        <div className={classes.title}>Website Views</div>
-        <div className={classes.subtitle}>Last Campaign Performance</div>
+        <div className={classes.title}>{title}</div>
+        <div className={classes.subtitle}>{description}</div>
         <div className={classes.time}>
-          <AccessTimeIcon classes={{ root: classes.icon }} />
-          campaign sent 2 days ago
+          <div>
+            <AccessTimeIcon classes={{ root: classes.icon }} />
+            {data.toDateString()}
+          </div>
+          <div>{data.toLocaleTimeString()}</div>
         </div>
       </div>
     </div>
