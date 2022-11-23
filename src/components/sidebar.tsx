@@ -6,14 +6,11 @@ import axios from 'axios'
 import React, { useContext, useEffect } from 'react'
 import DashboardIcon from '@material-ui/icons/Dashboard'
 import { makeStyles } from '@material-ui/core'
-import Sidebar from '@/components/sidebar'
+import classNames from 'classnames'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 const useStyles = makeStyles({
-  container: {
-    height: '100vh',
-    width: '100vw',
-    padding: '1rem',
-  },
   sidebar: {
     height: '100%',
     width: '250px',
@@ -58,32 +55,50 @@ const useStyles = makeStyles({
   },
 })
 
-const Dashboard = () => {
+const links = [
+  {
+    href: '/',
+    icon: <DashboardIcon />,
+    label: 'Dashboard',
+  },
+  {
+    href: '/planned',
+    icon: <DashboardIcon />,
+    label: 'Planned',
+  },
+  {
+    href: '/completed',
+    icon: <DashboardIcon />,
+    label: 'Completed',
+  },
+]
+
+const Sidebar = () => {
+  const router = useRouter()
   const classes = useStyles()
-  const user = useContext(UserContext)
-  const [events, setEvents] = React.useState<PlannedEvent[]>([])
-
-  const getEvents = async (): Promise<void> => {
-    const authHeader = await authHeaders()
-
-    axios
-      .get(backURL('api/v1/events'), {
-        headers: { ...authHeader },
-      })
-      .then(({ data }) => setEvents(data))
-  }
-
-  useEffect(() => {
-    getEvents()
-  }, [])
-
+  console.log(router.pathname)
   return (
-    <Layout description={'Descriptions page'} title={'Descriptions'}>
-      <div className={classes.container}>
-        <Sidebar />
+    <div className={classes.sidebar}>
+      <div className={classes.head}>{'trib'}</div>
+      <div className={classes.menu}>
+        {links.map((link) => {
+          console.log(link.href, router.pathname)
+          return (
+            <Link href={link.href} key={link.href}>
+              <a
+                className={classNames({
+                  ['active']: router.pathname === link.href,
+                })}
+              >
+                {link.icon}
+                {link.label}
+              </a>
+            </Link>
+          )
+        })}
       </div>
-    </Layout>
+    </div>
   )
 }
 
-export default Dashboard
+export default Sidebar
