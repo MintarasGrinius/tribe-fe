@@ -34,7 +34,7 @@ interface Props {
 
 const useStyles = makeStyles({
   container: {
-    marginTop: '1.5rem',
+    margin: '2.5rem 0 1rem',
     width: '320px',
     height: '320px',
     display: 'flex',

@@ -63,7 +63,10 @@ const useStyles = makeStyles({
     flex: 1,
     display: 'flex',
     flexWrap: 'wrap',
-    gap: '1.5rem',
+    gap: '0 1.5rem',
+    overflow: 'auto',
+    marginBottom: '-1rem',
+    margin: '-1rem 0',
   },
 })
 
