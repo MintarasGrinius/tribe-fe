@@ -14,6 +14,7 @@ import {
 import { generateDisplayableImage } from '../utils'
 import classNames from 'classnames'
 import AccessTimeIcon from '@material-ui/icons/AccessTime'
+import Image from 'next/image'
 
 export type PlannedEvent = {
   age_group: string
@@ -36,6 +37,7 @@ interface Props {
 
 const useStyles = makeStyles({
   container: {
+    cursor: 'pointer',
     margin: '2.5rem 0 1rem',
     width: '320px',
     height: '320px',
@@ -122,14 +124,21 @@ const useStyles = makeStyles({
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: '400px',
+    width: '60%',
+    height: '60%',
     backgroundColor: 'rgb(18, 18, 18)',
     border: '2px solid rgb(0, 0, 0)',
     boxShadow:
       'rgb(0 0 0 / 20%) 0px 11px 15px -7px, rgb(0 0 0 / 14%) 0px 24px 38px 3px, rgb(0 0 0 / 12%) 0px 9px 46px 8px',
-    padding: '32px',
     color: '#fff',
     borderRadius: '12px',
+  },
+  imageContainer: {
+    height: '50%',
+    position: 'relative',
+  },
+  modalContentContainer: {
+    padding: '32px',
   },
 })
 
@@ -152,6 +161,7 @@ const EventCard = ({
   const classes = useStyles()
   const data = new Date(time)
   const [open, setOpen] = React.useState(false)
+  console.log(photos)
 
   return (
     <>
@@ -182,10 +192,20 @@ const EventCard = ({
         aria-describedby="modal-modal-description"
       >
         <Box className={classes.modalBax}>
-          <Typography id="modal-modal-title">Text in a modal</Typography>
-          <Typography id="modal-modal-description">
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          <div className={classes.imageContainer}>
+            <Image
+              src={generateDisplayableImage(photos?.[0])}
+              layout="fill"
+              objectFit="cover"
+              objectPosition={'center'}
+            />
+          </div>
+          <div className={classes.modalContentContainer}>
+            <Typography id="modal-modal-title">Text in a modal</Typography>
+            <Typography id="modal-modal-description">
+              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+            </Typography>
+          </div>
         </Box>
       </Modal>
     </>
