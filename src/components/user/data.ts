@@ -20,7 +20,6 @@ export const getUser = async (): Promise<User> => {
     if (response.status != 200) {
       return { loggedIn: false, showPreview: false, email: '' }
     }
-    console.log('response', response.data)
 
     return {
       showPreview: response.data.show_preview,

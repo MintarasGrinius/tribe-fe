@@ -120,6 +120,7 @@ const useStyles = makeStyles({
     margin: '1.2px 4px 0px 0px',
   },
   modalBax: {
+    overflow: 'hidden',
     position: 'absolute',
     top: '50%',
     left: '50%',
@@ -127,7 +128,6 @@ const useStyles = makeStyles({
     width: '60%',
     height: '60%',
     backgroundColor: 'rgb(18, 18, 18)',
-    border: '2px solid rgb(0, 0, 0)',
     boxShadow:
       'rgb(0 0 0 / 20%) 0px 11px 15px -7px, rgb(0 0 0 / 14%) 0px 24px 38px 3px, rgb(0 0 0 / 12%) 0px 9px 46px 8px',
     color: '#fff',
