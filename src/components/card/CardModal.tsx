@@ -88,6 +88,9 @@ const useStyles = makeStyles({
   bottomDescription: {
     // display: 'contents',
   },
+  time: {
+    marginLeft: '0.5rem',
+  },
 })
 
 const CardModal = ({
@@ -149,7 +152,10 @@ const CardModal = ({
                 </div>
                 <div>
                   <AccessTime fontSize={'inherit'} />
-                  {`${data.toDateString()} ${data.toLocaleTimeString()}`}
+                  {data.toDateString()}
+                  <div className={classes.time}>
+                    {data.toLocaleTimeString().slice(0, 5)}
+                  </div>
                 </div>
               </div>
             </div>
@@ -164,7 +170,7 @@ const CardModal = ({
             </div>
             <div className={classes.doubleDetailsContainer}>
               <div>{`Party category: ${category}`}</div>
-              <div>{`Own drinks are ${!own_drinks && 'not'} allowed.`}</div>
+              <div>{`Own drinks are ${own_drinks ? '' : 'not'} allowed.`}</div>
               <div>{`Dress Code: ${dress_code}`}</div>
             </div>
           </div>
