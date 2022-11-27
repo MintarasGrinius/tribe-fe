@@ -15,6 +15,12 @@ import { generateDisplayableImage } from '../utils'
 import classNames from 'classnames'
 import AccessTimeIcon from '@material-ui/icons/AccessTime'
 import Image from 'next/image'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import 'swiper/css/scrollbar'
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper'
 
 export type PlannedEvent = {
   age_group: string
@@ -132,10 +138,20 @@ const useStyles = makeStyles({
       'rgb(0 0 0 / 20%) 0px 11px 15px -7px, rgb(0 0 0 / 14%) 0px 24px 38px 3px, rgb(0 0 0 / 12%) 0px 9px 46px 8px',
     color: '#fff',
     borderRadius: '12px',
+    '& div.swiper-button-prev, div.swiper-button-next': {
+      '&::before': {
+        background: 'none',
+      },
+      '&::after': {
+        fontSize: '2rem',
+        color: '#fff',
+      },
+    },
   },
   imageContainer: {
     height: '50%',
     position: 'relative',
+    minHeight: '250px',
   },
   modalContentContainer: {
     padding: '32px',
@@ -192,18 +208,39 @@ const EventCard = ({
         aria-describedby="modal-modal-description"
       >
         <Box className={classes.modalBax}>
-          <div className={classes.imageContainer}>
-            <Image
-              src={generateDisplayableImage(photos?.[0])}
-              layout="fill"
-              objectFit="cover"
-              objectPosition={'center'}
-            />
-          </div>
+          <Swiper
+            spaceBetween={50}
+            slidesPerView={1}
+            onSlideChange={() => console.log('slide change')}
+            onSwiper={(swiper) => console.log(swiper)}
+            modules={[Navigation]}
+            navigation
+            pagination={{ clickable: true }}
+          >
+            {photos?.map((photo) => (
+              <SwiperSlide className={classes.imageContainer}>
+                <Image
+                  src={generateDisplayableImage(photo)}
+                  layout="fill"
+                  objectFit="cover"
+                  objectPosition={'center'}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
           <div className={classes.modalContentContainer}>
-            <Typography id="modal-modal-title">Text in a modal</Typography>
+            <Typography id="modal-modal-title">{title}</Typography>
             <Typography id="modal-modal-description">
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+              <div>
+                {age_group.from} {age_group.to}
+              </div>
+              <div>{capacity}</div>
+              <div>{category}</div>
+              <div>{description}</div>
+              <div>{dress_code}</div>
+              <div>{location}</div>
+              <div>{own_drinks}</div>
+              <div>{time}</div>
             </Typography>
           </div>
         </Box>
