@@ -1,4 +1,3 @@
-import EventCard, { PlannedEvent } from '@/components/card'
 import Layout from '@/components/layout'
 import { UserContext } from '@/components/user'
 import { authHeaders, backURL } from '@/components/user/env'
@@ -7,6 +6,7 @@ import React, { useContext, useEffect } from 'react'
 import DashboardIcon from '@material-ui/icons/Dashboard'
 import { makeStyles } from '@material-ui/core'
 import Sidebar from '@/components/sidebar'
+import EventCard, { PlannedEvent } from '@/components/card'
 
 const useStyles = makeStyles({
   container: {
