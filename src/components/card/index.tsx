@@ -1,6 +1,6 @@
 //@flow
 import * as React from 'react'
-import { CardMedia, makeStyles } from '@material-ui/core'
+import { Badge, CardMedia, makeStyles } from '@material-ui/core'
 import { generateDisplayableImage } from '../../utils'
 import AccessTimeIcon from '@material-ui/icons/AccessTime'
 import CardModal from './CardModal'
@@ -10,6 +10,7 @@ export type PlannedEvent = {
     from: number
     to: number
   }
+  liked: boolean
   capacity: number
   category: string
   description: string
@@ -55,6 +56,11 @@ const useStyles = makeStyles({
         bottom: '1.3rem',
         height: '210px',
         transition: 'all 0.5s',
+      },
+      '& span.MuiBadge-badge': {
+        padding: '8px',
+        transition: 'all 0.5s',
+        fontSize: '90%',
       },
     },
   },
@@ -111,6 +117,11 @@ const useStyles = makeStyles({
     fontSize: '14px',
     margin: '1.2px 4px 0px 0px',
   },
+  badge: {
+    bottom: '20px',
+    right: '50px',
+    transition: 'all 0.5s',
+  },
 })
 
 const EventCard = ({ event }: Props) => {
@@ -121,13 +132,25 @@ const EventCard = ({ event }: Props) => {
   return (
     <>
       <div onClick={() => setOpen(true)} className={classes.container}>
-        <CardMedia
-          classes={{ root: classes.media }}
-          component="img"
-          height="140"
-          image={generateDisplayableImage(event.photos?.[0])}
-          alt="green iguana"
-        />
+        <Badge
+          invisible={!event.liked}
+          // className={classes.badge}
+          classes={{ badge: classes.badge }}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'right',
+          }}
+          badgeContent={'Applied'}
+          color="secondary"
+        >
+          <CardMedia
+            classes={{ root: classes.media }}
+            component="img"
+            height="140"
+            image={generateDisplayableImage(event.photos?.[0])}
+          />
+        </Badge>
+
         <div className={classes.contentContainer}>
           <div className={classes.title}>{event.title}</div>
           <div className={classes.subtitle}>{event.description}</div>

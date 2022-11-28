@@ -130,6 +130,7 @@ const CardModal = ({
     dress_code,
     event_id,
     id,
+    liked,
     location,
     own_drinks,
     time,
@@ -161,7 +162,7 @@ const CardModal = ({
 
   return (
     <>
-      {open && (
+      {open && !liked && (
         <button onClick={() => swipeRight(event_id)} className={classes.apply}>
           {'I wish to attend this event!'}
         </button>

@@ -82,7 +82,10 @@ const Dashboard = () => {
       .get(backURL('api/v1/events'), {
         headers: { ...authHeader },
       })
-      .then(({ data }) => setEvents(data))
+      .then(({ data }) => {
+        console.log(data)
+        setEvents(data)
+      })
   }
 
   useEffect(() => {
