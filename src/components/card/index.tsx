@@ -58,7 +58,6 @@ const useStyles = makeStyles({
         transition: 'all 0.5s',
       },
       '& span.MuiBadge-badge': {
-        padding: '8px',
         transition: 'all 0.5s',
         fontSize: '90%',
       },
