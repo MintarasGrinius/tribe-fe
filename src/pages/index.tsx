@@ -75,7 +75,26 @@ const Dashboard = () => {
   const user = useContext(UserContext)
   const [events, setEvents] = React.useState<PlannedEvent[]>([])
 
+  const applyToAttend = async (eventId) => {
+    const auth = await authHeaders()
+    console.log('right', auth)
+    await axios
+      .post(
+        backURL(`api/v1/events/${eventId}/like`),
+        {},
+        {
+          headers: { ...auth },
+        }
+      )
+      .then((response) => {
+        getEvents()
+        console.log(response)
+      })
+      .catch((error) => console.log(error))
+  }
+
   const getEvents = async (): Promise<void> => {
+    console.log('getting events')
     const authHeader = await authHeaders()
 
     axios
@@ -98,7 +117,10 @@ const Dashboard = () => {
         <Sidebar />
         <div className={classes.innerContainer}>
           {events.map((a) => (
-            <EventCard event={a} />
+            <EventCard
+              applyToAttend={() => applyToAttend(a.event_id)}
+              event={a}
+            />
           ))}
         </div>
       </div>

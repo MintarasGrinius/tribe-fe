@@ -1,6 +1,6 @@
 //@flow
 import * as React from 'react'
-import { Box, Icon, makeStyles, Modal } from '@material-ui/core'
+import { Badge, Box, Icon, makeStyles, Modal } from '@material-ui/core'
 import { generateDisplayableImage } from '../../utils'
 import Image from 'next/image'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -15,11 +15,13 @@ import AccessTime from '@material-ui/icons/AccessTime'
 import Close from '@material-ui/icons/Close'
 import { authHeaders, backURL } from '../user/env'
 import axios from 'axios'
+import classNames from 'classnames'
 
 interface Props {
   event: PlannedEvent
   open: boolean
   setOpen: (open: boolean) => void
+  applyToAttend: () => void
 }
 
 const useStyles = makeStyles({
@@ -95,20 +97,22 @@ const useStyles = makeStyles({
   time: {
     marginLeft: '0.5rem',
   },
-  apply: {
-    border: 'none',
-    background: 'linear-gradient(195deg, rgb(236, 64, 122), rgb(216, 27, 96))',
-    color: 'rgb(255, 255, 255)',
-    borderRadius: '0.75rem',
-    boxShadow:
-      'rgb(0 0 0 / 14%) 0rem 0.25rem 1.25rem 0rem, rgb(233 30 98 / 40%) 0rem 0.4375rem 0.625rem -0.3125rem',
+  badgeLocation: {
     position: 'absolute',
-    width: 'max-content',
-    zIndex: 10000,
-    padding: '0.5rem 1rem',
     top: '50%',
     left: '50%',
     transform: 'translate(calc(-50% + 170px), calc(-50% + 240px))',
+    width: 'max-content',
+    borderRadius: '0.75rem',
+    border: 'none',
+    color: 'rgb(255, 255, 255)',
+    padding: '0.5rem 1rem',
+    zIndex: 10000,
+  },
+  apply: {
+    background: 'linear-gradient(195deg, rgb(236, 64, 122), rgb(216, 27, 96))',
+    boxShadow:
+      'rgb(0 0 0 / 14%) 0rem 0.25rem 1.25rem 0rem, rgb(233 30 98 / 40%) 0rem 0.4375rem 0.625rem -0.3125rem',
     cursor: 'pointer',
     transition: 'all 0.2s ease-in-out',
     '&:hover': {
@@ -118,6 +122,11 @@ const useStyles = makeStyles({
       fontSize: '1.02rem',
       transition: 'all 0.2s ease-in-out',
     },
+  },
+  applied: {
+    background: 'linear-gradient(195deg, rgb(106 106 106), rgb(64 64 64))',
+    boxShadow:
+      'rgb(0 0 0 / 14%) 0rem 0.25rem 1.25rem 0rem, rgb(106 106 106 / 40%) 0rem 0.4375rem 0.625rem -0.3125rem',
   },
 })
 
@@ -139,33 +148,25 @@ const CardModal = ({
   },
   open,
   setOpen,
+  applyToAttend,
 }: Props) => {
   const classes = useStyles()
   const data = new Date(time)
 
-  const swipeRight = async (index: number) => {
-    const auth = await authHeaders()
-    console.log('right', auth)
-    await axios
-      .post(
-        backURL(`api/v1/events/${index}/like`),
-        {},
-        {
-          headers: { ...auth },
-        }
-      )
-      .then((response) => {
-        console.log(response)
-      })
-      .catch((error) => console.log(error))
-  }
-
   return (
     <>
       {open && !liked && (
-        <button onClick={() => swipeRight(event_id)} className={classes.apply}>
+        <button
+          onClick={applyToAttend}
+          className={classNames(classes.apply, classes.badgeLocation)}
+        >
           {'I wish to attend this event!'}
         </button>
+      )}
+      {open && liked && (
+        <Badge className={classNames(classes.badgeLocation, classes.applied)}>
+          {'Applied'}
+        </Badge>
       )}
       <Modal
         open={open}

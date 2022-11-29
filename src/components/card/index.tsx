@@ -26,6 +26,7 @@ export type PlannedEvent = {
 
 interface Props {
   event: PlannedEvent
+  applyToAttend: () => void
 }
 
 const useStyles = makeStyles({
@@ -120,10 +121,12 @@ const useStyles = makeStyles({
     bottom: '20px',
     right: '50px',
     transition: 'all 0.5s',
+    background: 'linear-gradient(195deg, rgb(106 106 106), rgb(64 64 64))',
+    padding: '9px',
   },
 })
 
-const EventCard = ({ event }: Props) => {
+const EventCard = ({ event, applyToAttend }: Props) => {
   const classes = useStyles()
   const data = new Date(event.time)
   const [open, setOpen] = React.useState(false)
@@ -133,7 +136,6 @@ const EventCard = ({ event }: Props) => {
       <div onClick={() => setOpen(true)} className={classes.container}>
         <Badge
           invisible={!event.liked}
-          // className={classes.badge}
           classes={{ badge: classes.badge }}
           anchorOrigin={{
             vertical: 'bottom',
@@ -162,7 +164,12 @@ const EventCard = ({ event }: Props) => {
           </div>
         </div>
       </div>
-      <CardModal open={open} setOpen={setOpen} event={event} />
+      <CardModal
+        applyToAttend={applyToAttend}
+        open={open}
+        setOpen={setOpen}
+        event={event}
+      />
     </>
   )
 }
