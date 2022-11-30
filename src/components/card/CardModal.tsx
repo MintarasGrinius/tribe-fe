@@ -23,6 +23,7 @@ interface Props {
   open: boolean
   setOpen: (open: boolean) => void
   applyToAttend: () => void
+  dislike: () => void
 }
 
 const useStyles = makeStyles({
@@ -135,9 +136,12 @@ const useStyles = makeStyles({
     marginLeft: '0.5rem',
   },
   applied: {
-    background: 'linear-gradient(195deg, rgb(106 106 106), rgb(64 64 64))',
+    background: 'linear-gradient(195deg, rgb(73, 163, 241), rgb(26, 115, 232))',
     boxShadow:
       'rgb(0 0 0 / 14%) 0rem 0.25rem 1.25rem 0rem, rgb(106 106 106 / 40%) 0rem 0.4375rem 0.625rem -0.3125rem',
+  },
+  disliked: {
+    background: 'linear-gradient(195deg, rgb(106 106 106), rgb(64 64 64))',
   },
 })
 
@@ -150,7 +154,7 @@ const CardModal = ({
     dress_code,
     event_id,
     id,
-    liked,
+    status,
     location,
     own_drinks,
     time,
@@ -160,6 +164,7 @@ const CardModal = ({
   open,
   setOpen,
   applyToAttend,
+  dislike,
 }: Props) => {
   const classes = useStyles()
   const data = new Date(time)
@@ -176,10 +181,11 @@ const CardModal = ({
           <Box className={classes.modalBax}>
             {open && (
               <div className={classes.badgeLocation}>
-                {!liked ? (
+                {!status.length ? (
                   <>
                     <button
-                      className={classNames(classes.badge, classes.applied)}
+                      className={classNames(classes.badge, classes.disliked)}
+                      onClick={dislike}
                     >
                       <ThumbDown />
                     </button>
@@ -191,9 +197,21 @@ const CardModal = ({
                     </button>
                   </>
                 ) : (
-                  <Badge className={classNames(classes.badge, classes.applied)}>
-                    {'Applied'}
-                  </Badge>
+                  <>
+                    {status === 'liked' ? (
+                      <Badge
+                        className={classNames(classes.badge, classes.applied)}
+                      >
+                        {'Applied'}
+                      </Badge>
+                    ) : (
+                      <Badge
+                        className={classNames(classes.badge, classes.disliked)}
+                      >
+                        {'Disliked'}
+                      </Badge>
+                    )}
+                  </>
                 )}
               </div>
             )}

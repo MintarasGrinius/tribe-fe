@@ -4,13 +4,14 @@ import { Badge, CardMedia, makeStyles } from '@material-ui/core'
 import { generateDisplayableImage } from '../../utils'
 import AccessTimeIcon from '@material-ui/icons/AccessTime'
 import CardModal from './CardModal'
+import classNames from 'classnames'
 
 export type PlannedEvent = {
   age_group: {
     from: number
     to: number
   }
-  liked: boolean
+  status: string
   capacity: number
   category: string
   description: string
@@ -27,6 +28,7 @@ export type PlannedEvent = {
 interface Props {
   event: PlannedEvent
   applyToAttend: () => void
+  dislike: () => void
 }
 
 const useStyles = makeStyles({
@@ -121,12 +123,15 @@ const useStyles = makeStyles({
     bottom: '20px',
     right: '50px',
     transition: 'all 0.5s',
-    background: 'linear-gradient(195deg, rgb(106 106 106), rgb(64 64 64))',
+    background: 'linear-gradient(195deg, rgb(73, 163, 241), rgb(26, 115, 232))',
     padding: '9px',
+  },
+  dislike: {
+    background: 'linear-gradient(195deg, rgb(106 106 106), rgb(64 64 64))',
   },
 })
 
-const EventCard = ({ event, applyToAttend }: Props) => {
+const EventCard = ({ event, applyToAttend, dislike }: Props) => {
   const classes = useStyles()
   const data = new Date(event.time)
   const [open, setOpen] = React.useState(false)
@@ -135,13 +140,17 @@ const EventCard = ({ event, applyToAttend }: Props) => {
     <>
       <div onClick={() => setOpen(true)} className={classes.container}>
         <Badge
-          invisible={!event.liked}
-          classes={{ badge: classes.badge }}
+          invisible={!event.status}
+          classes={{
+            badge: classNames(classes.badge, {
+              [classes.dislike]: event.status === 'dislike',
+            }),
+          }}
           anchorOrigin={{
             vertical: 'bottom',
             horizontal: 'right',
           }}
-          badgeContent={'Applied'}
+          badgeContent={event.status === 'liked' ? 'Applied' : 'Disliked'}
           color="secondary"
         >
           <CardMedia
@@ -165,6 +174,7 @@ const EventCard = ({ event, applyToAttend }: Props) => {
         </div>
       </div>
       <CardModal
+        dislike={dislike}
         applyToAttend={applyToAttend}
         open={open}
         setOpen={setOpen}

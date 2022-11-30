@@ -77,10 +77,26 @@ const Dashboard = () => {
 
   const applyToAttend = async (eventId) => {
     const auth = await authHeaders()
-    console.log('right', auth)
     await axios
       .post(
         backURL(`api/v1/events/${eventId}/like`),
+        {},
+        {
+          headers: { ...auth },
+        }
+      )
+      .then((response) => {
+        getEvents()
+        console.log(response)
+      })
+      .catch((error) => console.log(error))
+  }
+
+  const dislike = async (eventId) => {
+    const auth = await authHeaders()
+    await axios
+      .post(
+        backURL(`api/v1/events/${eventId}/dislike`),
         {},
         {
           headers: { ...auth },
@@ -119,6 +135,7 @@ const Dashboard = () => {
           {events.map((a) => (
             <EventCard
               applyToAttend={() => applyToAttend(a.event_id)}
+              dislike={() => dislike(a.event_id)}
               event={a}
             />
           ))}
