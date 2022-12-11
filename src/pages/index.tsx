@@ -1,13 +1,13 @@
-import Layout from '@/components/layout'
-import { UserContext } from '@/components/user'
-import { authHeaders, backURL } from '@/components/user/env'
-import axios from 'axios'
 import React, { useContext, useEffect } from 'react'
 import DashboardIcon from '@material-ui/icons/Dashboard'
 import { makeStyles } from '@material-ui/core'
+import Skeleton from '@material-ui/lab/Skeleton'
+import axios from 'axios'
+import Layout from '@/components/layout'
+import { UserContext } from '@/components/user'
+import { authHeaders, backURL } from '@/components/user/env'
 import Sidebar from '@/components/sidebar'
 import EventCard, { PlannedEvent } from '@/components/card'
-import Skeleton from '@material-ui/lab/Skeleton'
 
 const useStyles = makeStyles({
   container: {
@@ -81,6 +81,21 @@ const Dashboard = () => {
   const [events, setEvents] = React.useState<PlannedEvent[]>([])
   const [loading, setLoading] = React.useState(true)
 
+  const getEvents = async (): Promise<void> => {
+    setLoading(true)
+    const authHeader = await authHeaders()
+
+    axios
+      .get(backURL('api/v1/events'), {
+        headers: { ...authHeader },
+      })
+      .then(({ data }) => {
+        console.log(data)
+        setEvents(data)
+      })
+      .finally(() => setLoading(false))
+  }
+
   const applyToAttend = async (eventId) => {
     setLoading(true)
     const auth = await authHeaders()
@@ -118,21 +133,6 @@ const Dashboard = () => {
       .finally(() => setLoading(false))
   }
 
-  const getEvents = async (): Promise<void> => {
-    setLoading(true)
-    const authHeader = await authHeaders()
-
-    axios
-      .get(backURL('api/v1/events'), {
-        headers: { ...authHeader },
-      })
-      .then(({ data }) => {
-        console.log(data)
-        setEvents(data)
-      })
-      .finally(() => setLoading(false))
-  }
-
   useEffect(() => {
     getEvents()
   }, [])
@@ -149,9 +149,9 @@ const Dashboard = () => {
                 .map((a) => (
                   <Skeleton
                     className={classes.skeleton}
+                    height={320}
                     variant="rect"
                     width={320}
-                    height={320}
                   />
                 ))}
             </>
