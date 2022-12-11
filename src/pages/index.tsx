@@ -7,6 +7,7 @@ import DashboardIcon from '@material-ui/icons/Dashboard'
 import { makeStyles } from '@material-ui/core'
 import Sidebar from '@/components/sidebar'
 import EventCard, { PlannedEvent } from '@/components/card'
+import Skeleton from '@material-ui/lab/Skeleton'
 
 const useStyles = makeStyles({
   container: {
@@ -68,14 +69,20 @@ const useStyles = makeStyles({
     marginBottom: '-1rem',
     margin: '-1rem 0',
   },
+  skeleton: {
+    margin: '1rem 0',
+    borderRadius: '0.75rem',
+  },
 })
 
 const Dashboard = () => {
   const classes = useStyles()
   const user = useContext(UserContext)
   const [events, setEvents] = React.useState<PlannedEvent[]>([])
+  const [loading, setLoading] = React.useState(true)
 
   const applyToAttend = async (eventId) => {
+    setLoading(true)
     const auth = await authHeaders()
     await axios
       .post(
@@ -90,6 +97,7 @@ const Dashboard = () => {
         console.log(response)
       })
       .catch((error) => console.log(error))
+      .finally(() => setLoading(false))
   }
 
   const dislike = async (eventId) => {
@@ -107,10 +115,11 @@ const Dashboard = () => {
         console.log(response)
       })
       .catch((error) => console.log(error))
+      .finally(() => setLoading(false))
   }
 
   const getEvents = async (): Promise<void> => {
-    console.log('getting events')
+    setLoading(true)
     const authHeader = await authHeaders()
 
     axios
@@ -121,6 +130,7 @@ const Dashboard = () => {
         console.log(data)
         setEvents(data)
       })
+      .finally(() => setLoading(false))
   }
 
   useEffect(() => {
@@ -132,13 +142,30 @@ const Dashboard = () => {
       <div className={classes.container}>
         <Sidebar />
         <div className={classes.innerContainer}>
-          {events.map((a) => (
-            <EventCard
-              applyToAttend={() => applyToAttend(a.event_id)}
-              dislike={() => dislike(a.event_id)}
-              event={a}
-            />
-          ))}
+          {loading ? (
+            <>
+              {Array(6)
+                .fill(1)
+                .map((a) => (
+                  <Skeleton
+                    className={classes.skeleton}
+                    variant="rect"
+                    width={320}
+                    height={320}
+                  />
+                ))}
+            </>
+          ) : (
+            <>
+              {events.map((a) => (
+                <EventCard
+                  applyToAttend={() => applyToAttend(a.event_id)}
+                  dislike={() => dislike(a.event_id)}
+                  event={a}
+                />
+              ))}
+            </>
+          )}
         </div>
       </div>
     </Layout>
