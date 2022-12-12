@@ -1,12 +1,20 @@
 import { useContext, useEffect, useState } from 'react'
+import {
+  Button,
+  makeStyles,
+  TextField,
+  ButtonProps,
+  styled,
+} from '@material-ui/core'
+import axios from 'axios'
+import { Form, Formik } from 'formik'
+import { get } from 'js-cookie'
 import GeneralLayout from '@/components/layout/general-layout'
 import { UserContext } from '@/components/user'
 import { SessionContext } from '@/components/session/context'
 import { saveSession } from '@/components/user/sessions'
-import axios from 'axios'
-import { Form, Formik } from 'formik'
-import { Button, makeStyles, TextField } from '@material-ui/core'
-import { ButtonProps, styled } from '@material-ui/core'
+import { login } from 'utils/auth.server'
+import { prisma } from 'utils/prisma.server'
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
   color: '#fff',
@@ -84,40 +92,44 @@ const useStyles = makeStyles(
   { name: 'MuiExample_Component' }
 )
 
-const Login: React.FC = () => {
+const Login: React.FC = ({ token }) => {
   const user = useContext(UserContext)
-  console.log(user)
   const [loading, setLoading] = useState(false)
   const classes = useStyles()
   const { sessionDispatch } = useContext(SessionContext)
+  console.log(token)
+
+  useEffect(() => {
+    console.log(token)
+  })
 
   const handleLogin = async (values: { email: string; password: string }) => {
     setLoading(true)
-    axios({
-      method: 'post',
-      url: 'http://127.0.0.1:3000/auth/sign_in',
-      data: {
-        user: values,
-      },
-    })
-      .then(({ data }) => {
-        saveSession({ token: data.data.auth_token, email: values.email }).then(
-          () => {
-            sessionDispatch({
-              type: 'SET_LOGGED_IN',
-              loggedIn: true,
-              email: values.email,
-            })
-          }
-        )
-        window.location.href = '/'
-      })
-      .catch((response) => {
-        console.log(response)
-      })
-      .finally(() => {
-        setLoading(false)
-      })
+    // axios({
+    //   method: 'post',
+    //   url: 'http://127.0.0.1:3000/auth/sign_in',
+    //   data: {
+    //     user: values,
+    //   },
+    // })
+    //   .then(({ data }) => {
+    //     saveSession({ token: data.data.auth_token, email: values.email }).then(
+    //       () => {
+    //         sessionDispatch({
+    //           type: 'SET_LOGGED_IN',
+    //           loggedIn: true,
+    //           email: values.email,
+    //         })
+    //       }
+    //     )
+    //     window.location.href = '/'
+    //   })
+    //   .catch((response) => {
+    //     console.log(response)
+    //   })
+    //   .finally(() => {
+    //     setLoading(false)
+    //   })
   }
   return (
     <GeneralLayout>
@@ -139,20 +151,20 @@ const Login: React.FC = () => {
                 <label htmlFor="email">Email: </label>
                 <TextField
                   classes={{ root: classes.textField }}
-                  variant="outlined"
+                  name="email"
                   size="small"
                   type="email"
-                  name="email"
+                  variant="outlined"
                 />
               </div>
               <div className={classes.field}>
                 <label htmlFor="password">Password: </label>
                 <TextField
                   classes={{ root: classes.textField }}
-                  size="small"
-                  variant="outlined"
-                  type="password"
                   name="password"
+                  size="small"
+                  type="password"
+                  variant="outlined"
                 />
               </div>
               <ColorButton
@@ -168,6 +180,21 @@ const Login: React.FC = () => {
       </div>
     </GeneralLayout>
   )
+}
+
+export const getServerSideProps = async ({ req }) => {
+  // const token = await login({
+  //   email: 'email@email.com',
+  //   password: 'Password01',
+  // })
+  const aaa = await prisma.user
+    .findUnique({
+      where: { email: 'email@email.com' },
+    })
+    .then((user) => {
+      return user
+    })
+  return { props: { aaa: aaa } }
 }
 
 export default Login

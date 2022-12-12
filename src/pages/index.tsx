@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react'
-import DashboardIcon from '@material-ui/icons/Dashboard'
 import { makeStyles } from '@material-ui/core'
 import Skeleton from '@material-ui/lab/Skeleton'
 import axios from 'axios'
