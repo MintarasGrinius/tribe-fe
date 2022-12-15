@@ -100,7 +100,9 @@ const Login: React.FC = ({ token }) => {
   console.log(token)
 
   useEffect(() => {
-    console.log(token)
+    axios.get('http://localhost:5678/api/user').then((res) => {
+      console.log(res)
+    })
   })
 
   const handleLogin = async (values: { email: string; password: string }) => {
@@ -180,21 +182,6 @@ const Login: React.FC = ({ token }) => {
       </div>
     </GeneralLayout>
   )
-}
-
-export const getServerSideProps = async ({ req }) => {
-  // const token = await login({
-  //   email: 'email@email.com',
-  //   password: 'Password01',
-  // })
-  const aaa = await prisma.user
-    .findUnique({
-      where: { email: 'email@email.com' },
-    })
-    .then((user) => {
-      return user
-    })
-  return { props: { aaa: aaa } }
 }
 
 export default Login
